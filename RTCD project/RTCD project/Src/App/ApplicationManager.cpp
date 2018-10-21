@@ -18,7 +18,8 @@ ApplicationManager::~ApplicationManager()
 int main()
 {
 
-	
+	// iterate through the object pool and update and call Update(), Render(), and Collide() on all shape composite objects, graphics and physics respectivley. - PC
+
 
 	return 0;
 }
