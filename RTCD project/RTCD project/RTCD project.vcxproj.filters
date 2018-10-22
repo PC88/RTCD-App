@@ -776,6 +776,9 @@
     <ClInclude Include="Src\PhysicsComp\SquarePhysicsComp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Dependencies\glut\include\glut.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Src\Dependencies\glm\detail\func_common.inl">
@@ -1165,5 +1168,15 @@
     <None Include="Src\Dependencies\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="Src\Dependencies\glut\glut\glut32.dll" />
+    <None Include="Src\Dependencies\glut\include\glut.def">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Src\Dependencies\glut\glut\glut32.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Src\Dependencies\glut\glut\README-win32.txt" />
   </ItemGroup>
 </Project>

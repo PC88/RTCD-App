@@ -172,6 +172,7 @@
     <ClCompile Include="Src\Shapes\Square.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\Dependencies\glut\include\glut.h" />
     <ClInclude Include="Src\PhysicsComp\SquarePhysicsComp.h" />
     <ClInclude Include="Src\PhysicsComp\PhysicsComp.h" />
     <ClInclude Include="Src\GraphicsComp\GraphicsComp.h" />
@@ -548,6 +549,14 @@
     <None Include="Src\Dependencies\glm\gtx\vector_angle.inl" />
     <None Include="Src\Dependencies\glm\gtx\vector_query.inl" />
     <None Include="Src\Dependencies\glm\gtx\wrap.inl" />
+    <None Include="Src\Dependencies\glut\glut\glut32.dll" />
+    <None Include="Src\Dependencies\glut\include\glut.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Src\Dependencies\glut\glut\glut32.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Src\Dependencies\glut\glut\README-win32.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
