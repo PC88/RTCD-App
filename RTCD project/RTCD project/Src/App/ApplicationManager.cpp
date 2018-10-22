@@ -10,6 +10,7 @@ ApplicationManager::ApplicationManager()
 }
 
 
+
 ApplicationManager::~ApplicationManager()
 {
 }
