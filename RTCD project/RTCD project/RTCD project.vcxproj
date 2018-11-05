@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src/Dependencies; $(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EntryPointSymbol>
@@ -108,7 +108,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src/Dependencies; $(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EntryPointSymbol>
@@ -127,7 +127,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src/Dependencies; $(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -148,7 +148,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src/Dependencies; $(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -162,6 +162,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\App\GameWindow.cpp" />
+    <ClCompile Include="Src\GraphicsComp\SquareGraphComp.cpp" />
+    <ClCompile Include="Src\App\QuadTree\QuadTree.cpp" />
     <ClCompile Include="Src\PhysicsComp\SquarePhysicsComp.cpp" />
     <ClCompile Include="Src\PhysicsComp\PhysicsComp.cpp" />
     <ClCompile Include="Src\GraphicsComp\GraphicsComp.cpp" />
@@ -170,8 +173,13 @@
     <ClCompile Include="Src\Shapes\Shape.cpp" />
     <ClCompile Include="Src\App\ObjectPool\ShapePool.cpp" />
     <ClCompile Include="Src\Shapes\Square.cpp" />
+    <ClCompile Include="Src\Shapes\Transform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\App\GameWindow.h" />
+    <ClInclude Include="Src\GraphicsComp\SquareGraphComp.h" />
+    <ClInclude Include="Src\App\QuadTree\QuadTree.h" />
+    <ClInclude Include="Src\Dependencies\glut\include\glut.h" />
     <ClInclude Include="Src\PhysicsComp\SquarePhysicsComp.h" />
     <ClInclude Include="Src\PhysicsComp\PhysicsComp.h" />
     <ClInclude Include="Src\GraphicsComp\GraphicsComp.h" />
@@ -417,6 +425,7 @@
     <ClInclude Include="Src\App\ObjectPool\ShapePool.h" />
     <ClInclude Include="Src\Shapes\Shape.h" />
     <ClInclude Include="Src\Shapes\Square.h" />
+    <ClInclude Include="Src\Shapes\Transform.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Src\Dependencies\glm\detail\func_common.inl" />
@@ -548,6 +557,14 @@
     <None Include="Src\Dependencies\glm\gtx\vector_angle.inl" />
     <None Include="Src\Dependencies\glm\gtx\vector_query.inl" />
     <None Include="Src\Dependencies\glm\gtx\wrap.inl" />
+    <None Include="Src\Dependencies\glut\glut\glut32.dll" />
+    <None Include="Src\Dependencies\glut\include\glut.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="Src\Dependencies\glut\glut\glut32.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Src\Dependencies\glut\glut\README-win32.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

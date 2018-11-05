@@ -1,8 +1,9 @@
 #include "GraphicsComp.h"
+#include "Transform.h"
 
 
 
-GraphicsComp::GraphicsComp()
+GraphicsComp::GraphicsComp(Transform ShapeTransform)
 {
 }
 

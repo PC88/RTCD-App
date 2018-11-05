@@ -1,8 +1,17 @@
 #pragma once
+
+class GameWindow;
+
 class ApplicationManager
 {
 public:
 	ApplicationManager();
-	~ApplicationManager();
+	virtual ~ApplicationManager();
+
+	void Initialise();
+
+private:
+
+	std::shared_ptr<GameWindow> window;
 };
 

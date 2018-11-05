@@ -1,11 +1,13 @@
 #include "PhysicsComp.h"
+#include "Transform.h"
 
 
 
-PhysicsComp::PhysicsComp()
+
+
+PhysicsComp::PhysicsComp(Transform ShapeTransform)
 {
 }
-
 
 PhysicsComp::~PhysicsComp()
 {
