@@ -7,7 +7,7 @@ class SquarePhysicsComp :
 	protected PhysicsComp
 {
 public:
-	SquarePhysicsComp(Transform ShapeTransform);
+	SquarePhysicsComp(std::shared_ptr<Transform> ShapeTransform);
 
 	virtual ~SquarePhysicsComp();
 
@@ -23,9 +23,10 @@ public:
 
 private:
 
+	std::shared_ptr<Transform> ShapeTransform;
 	vec2 velocity;
 	vec2 acceleration;
-	vec3 color;
+	vec3 colour;
 	//Transform transform; TODO
 };
 

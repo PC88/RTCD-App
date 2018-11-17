@@ -4,7 +4,7 @@ class GameWindow
 public:
 	virtual ~GameWindow();
 
-	GameWindow(char* title, int width, int height, int posX, int posY) :width(width), height(height)
+	GameWindow(char* title, int width, int height, int posX, int posY)
 	{		
 	}
 

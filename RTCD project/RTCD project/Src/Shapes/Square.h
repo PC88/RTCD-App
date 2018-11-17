@@ -28,9 +28,5 @@ public:
 	glm::vec2 GetDirection() override;
 
 	glm::vec2 GetPoistion() override;
-
-	glm::vec2 SetPositon(glm::vec2 NewPosition) override;
-
-	glm::vec2 SetDirection(glm::vec2 NewDirection) override;
 };
 

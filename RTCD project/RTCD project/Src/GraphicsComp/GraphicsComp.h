@@ -1,5 +1,6 @@
 #pragma once
 #include "Shape.h"
+#include <chrono>
 #include "glut/include/glut.h"
 
 class GraphicsComp

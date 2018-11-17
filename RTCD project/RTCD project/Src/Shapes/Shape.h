@@ -5,7 +5,7 @@
 
 class Transform;
 
- class Shape
+class Shape
 {
 public:
 	Shape();
@@ -23,20 +23,15 @@ public:
 
 	virtual glm::vec2 GetPoistion() = 0;
 
-	virtual glm::vec2 SetPositon(glm::vec2 NewPosition) = 0;
-
-	virtual glm::vec2 SetDirection(glm::vec2 NewDirection) = 0;
-
 
 private:
 
-		glm::vec2 direction;
+	glm::vec2 direction;
 
-		glm::vec2 position;
+	glm::vec2 position;
 
 protected:
 
-	    std::shared_ptr<Transform> ShapeTransform; // all shapes will have this TODO better way to do this than accessorfunction accessing an accessor function -PC
+	std::shared_ptr<Transform> ShapeTransform; // all shapes will have this TODO better way to do this than accessorfunction accessing an accessor function -PC
 
 };
-

@@ -1,6 +1,7 @@
 #pragma once
 #include "GraphicsComp.h"
-#include "glm.hpp"
+#include <memory>
+#include "glm/glm.hpp"
 
 class SquareGraphComp :
 	public GraphicsComp

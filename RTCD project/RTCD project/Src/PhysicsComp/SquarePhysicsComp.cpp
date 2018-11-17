@@ -3,7 +3,7 @@
 
 
 
-SquarePhysicsComp::SquarePhysicsComp(Transform ShapeTransform)
+SquarePhysicsComp::SquarePhysicsComp(std::shared_ptr<Transform> ShapeTransform) : ShapeTransform(ShapeTransform)
 {
 }
 
@@ -19,7 +19,7 @@ void SquarePhysicsComp::Update(std::chrono::milliseconds ElapsedDeltaTime)
 
 void SquarePhysicsComp::Move(glm::vec2 translation)
 {
-	Square::ShapeTransform.Translate(translation); // TODO fix this transform - PC
+	ShapeTransform->Translate(translation); // TODO transform may not be the same as the squares;
 }
 
 void SquarePhysicsComp::TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime)
@@ -31,7 +31,7 @@ void SquarePhysicsComp::TCVelocityVerletSolver(std::chrono::milliseconds Elapsed
 
 glm::vec2 SquarePhysicsComp::GetPosition()
 {
-	return Square::ShapeTransform->getPosition(); // TODO fix this transform - PC
+	return ShapeTransform->getPosition(); // TODO fix this transform - PC
 }
 
 glm::vec2 SquarePhysicsComp::GetDirection()

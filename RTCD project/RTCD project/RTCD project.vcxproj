@@ -162,6 +162,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\PhysicsComp\CirclePhysicsComp.cpp" />
+    <ClCompile Include="Src\GraphicsComp\CircleGraphComp.cpp" />
+    <ClCompile Include="Src\Shapes\Circle.cpp" />
     <ClCompile Include="Src\App\GameWindow.cpp" />
     <ClCompile Include="Src\GraphicsComp\SquareGraphComp.cpp" />
     <ClCompile Include="Src\App\QuadTree\QuadTree.cpp" />
@@ -174,8 +177,13 @@
     <ClCompile Include="Src\App\ObjectPool\ShapePool.cpp" />
     <ClCompile Include="Src\Shapes\Square.cpp" />
     <ClCompile Include="Src\Shapes\Transform.cpp" />
+    <ClCompile Include="Src\Shapes\Triangle.cpp" />
+    <ClCompile Include="Src\GraphicsComp\TrangleGraphComp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\PhysicsComp\CirclePhysicsComp.h" />
+    <ClInclude Include="Src\GraphicsComp\CircleGraphComp.h" />
+    <ClInclude Include="Src\Shapes\Circle.h" />
     <ClInclude Include="Src\App\GameWindow.h" />
     <ClInclude Include="Src\GraphicsComp\SquareGraphComp.h" />
     <ClInclude Include="Src\App\QuadTree\QuadTree.h" />
@@ -426,6 +434,8 @@
     <ClInclude Include="Src\Shapes\Shape.h" />
     <ClInclude Include="Src\Shapes\Square.h" />
     <ClInclude Include="Src\Shapes\Transform.h" />
+    <ClInclude Include="Src\Shapes\Triangle.h" />
+    <ClInclude Include="Src\GraphicsComp\TrangleGraphComp.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Src\Dependencies\glm\detail\func_common.inl" />

@@ -8,10 +8,10 @@ public:
 	ApplicationManager();
 	virtual ~ApplicationManager();
 
-	void Initialise();
+	void ReshapeWindow(int width, int height);
 
 private:
 
-	std::shared_ptr<GameWindow> window;
+	std::shared_ptr<GameWindow> m_window;
 };
 

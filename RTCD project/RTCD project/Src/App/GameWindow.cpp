@@ -16,7 +16,7 @@ GameWindow::~GameWindow()
 {
 }
 
-void GameWindow::Reshape(GLsizei width, GLsizei height) // no clue - PC
+void GameWindow::Reshape(GLsizei width, GLsizei height) 
 {
 	// Compute aspect ratio of the new window
 	if (height == 0) height = 1;                // To prevent divide by 0
