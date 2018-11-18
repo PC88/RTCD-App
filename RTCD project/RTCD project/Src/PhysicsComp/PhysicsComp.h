@@ -1,11 +1,12 @@
 #pragma once
 #include <chrono>
+#include "glm/glm.hpp"
 class Transform;
 
 class PhysicsComp
 {
 public:
-	PhysicsComp(Transform ShapeTransform);
+	PhysicsComp();
 	virtual ~PhysicsComp();
 
 	virtual void Update(std::chrono::milliseconds ElapsedDeltaTime) = 0;

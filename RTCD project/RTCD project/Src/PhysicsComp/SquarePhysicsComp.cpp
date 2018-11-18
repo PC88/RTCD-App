@@ -3,7 +3,8 @@
 
 
 
-SquarePhysicsComp::SquarePhysicsComp(std::shared_ptr<Transform> ShapeTransform) : ShapeTransform(ShapeTransform)
+SquarePhysicsComp::SquarePhysicsComp(std::shared_ptr<Transform> ShapeTransform, vec2& vel, vec2& acc, float& w, float& h)
+	: ShapeTransform(ShapeTransform), acceleration(acc), velocity(vel), width(w), height(h)
 {
 }
 
@@ -25,7 +26,7 @@ void SquarePhysicsComp::Move(glm::vec2 translation)
 void SquarePhysicsComp::TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime)
 {
 	Move(ElapsedDeltaTime * velocity + 0.5f * ElapsedDeltaTime * ElapsedDeltaTime * acceleration);
-	vec2 velInBetween = velocity + 0.5f * ElapsedDeltaTime * acceleration; // TODO make this time corrected -PC
+	vec2 velInBetween = velocity + 0.5f * ElapsedDeltaTime * acceleration; // cast/the types here -PC
 	velocity = velInBetween + 0.5f * acceleration;
 }
 

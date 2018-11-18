@@ -31,11 +31,6 @@ void ShapePool::create()
 	shapes.insert(shapes.end(), std::begin(trianglesInPool), std::end(trianglesInPool));
 }
 
-void ShapePool::Distirbute() 
-{
-	
-}
-
 void ShapePool::Display(std::chrono::milliseconds ElapsedDeltaTime)
 {
 	for (std::vector<Shape*>::iterator it = shapes.begin; it < shapes.end; it++)
@@ -56,14 +51,26 @@ void ShapePool::Load() //its either this way or 500+ lines of manual code it see
 {
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
-		squaresInPool[i] = new Square(); // change constructor to take position and respective shite
+		float width = 3.0f;
+		float height = 3.0f;
+		glm::vec2 vel;
+		glm::vec2 acc;
+		squaresInPool[i] = new Square(acc, vel, width, height);
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
-		circlesInPool[i] = new Circle(); // change constructor to take position and respective shite
+		float radius = 3.0f;
+		glm::vec2 vel;
+		glm::vec2 acc;
+		circlesInPool[i] = new Circle(radius,vel,acc); // change constructor to take position and respective shite
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
-		trianglesInPool[i] = new Triangle(); // change constructor to take position and respective shite
+		glm::vec2 vec1;
+		glm::vec2 vec2;
+		glm::vec2 vec3;
+		glm::vec2 vel;
+		glm::vec2 acc;
+		trianglesInPool[i] = new Triangle(vec1, vec2, vec3, vel, acc); // change constructor to take position and respective shite
 	}
 }

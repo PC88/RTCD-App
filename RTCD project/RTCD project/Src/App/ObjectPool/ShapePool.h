@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include <vector>
+#include <chrono>
 
 class Shape;
 class Transform;
@@ -15,8 +16,6 @@ public:
 	virtual ~ShapePool();
 
 	void create();
-
-	void Distirbute(); // no idea how to do this - PC
 
 	void Display(std::chrono::milliseconds ElapsedDeltaTime);
 

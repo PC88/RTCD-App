@@ -7,24 +7,29 @@
 // graphic and physics comp declarations and respective implementation added
 // rand seed added for more "random" randomness, aye.. that one...
 #include "Triangle.h"
-#include "TrangleGraphComp.h"
-#include "TrianglePhysicsComp"
+#include "TriangleGraphComp.h"
+#include "TrianglePhysicsComp.h"
+#include "Transform.h"
+#include <memory>
+
+
+Triangle::Triangle(glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, glm::vec2& acc)
+	: graphicComp(), physicsComp(), pointOne(p1), pointTwo(p2), pointThree(p3), velocity(vel), acceleration(acc)
+{
+	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
+	float initY = std::rand() % (450 - 0 + 1) + 0;
+
+	ShapeTransform = std::make_shared<Transform>();
+	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
+	// set Shape transform to position initially -PC
+	graphicComp = std::make_unique<TriangleGraphComp>(ShapeTransform, pointOne, pointTwo, pointThree);
+	physicsComp = std::make_unique<TrianglePhysicsComp>(ShapeTransform, pointOne, pointTwo, pointThree);
+	inUse = false;
+}
 
 Triangle::~Triangle()
 {
 }
-
-Triangle::Triangle(float ix, float iy)
-	: graphicComp(), physicsComp()
-{
-	ShapeTransform = std::make_shared<Transform>();
-	this->setPosition(glm::vec2(2, 2));
-	this->setDirection(glm::vec2(2, 2));
-	graphicComp = std::make_unique<TriangleGraphComp>(ShapeTransform);
-	physicsComp = std::make_unique<TrianglePhysicsComp>(ShapeTransform);
-	inUse = false;
-}
-
 void Triangle::Update(std::chrono::milliseconds ElapsedDeltaTime)
 {
 	physicsComp->Update(ElapsedDeltaTime);
@@ -45,7 +50,7 @@ void Triangle::Render(std::chrono::milliseconds ElapsedDeltaTime)
 
 vec2 Triangle::GetDirection()
 {
-	return ShapeTransform->getDirection();
+	return ShapeTransform->getUpDir();
 }
 
 vec2 Triangle::GetPosition()

@@ -11,8 +11,9 @@
 #include <glm\glm.hpp>
 #include <chrono>
 
-class CircleGraphComp;
-class CirclePhysicsComp;
+class TriangleGraphComp;
+class TrianglePhysicsComp;
+class Transform;
 
 using namespace glm;
 
@@ -20,18 +21,25 @@ class Triangle
 {
 private:
 
-	float x, y;
-	float dx, dy;
 	bool inUse;
 
-	std::unique_ptr<CircleGraphComp> graphicComp;
-	std::unique_ptr<CirclePhysicsComp> physicsComp;
+	vec2 pointOne;
+	vec2 pointTwo;
+	vec2 pointThree;
+	vec2 position;
+
+	vec2 velocity;
+	vec2 acceleration;
+	std::shared_ptr<Transform> ShapeTransform;
+
+	std::unique_ptr<TriangleGraphComp> graphicComp;
+	std::unique_ptr<TrianglePhysicsComp> physicsComp;
 
 public:
 
 
 	~Triangle() {};
-	Triangle(float ix, float iy);
+	Triangle(vec2& p1, vec2& p2, vec2& p3, vec2& vel, vec2& acc);
 
 	void Update(std::chrono::milliseconds ElapsedDeltaTime);
 	void Render(std::chrono::milliseconds ElapsedDeltaTime);

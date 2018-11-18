@@ -13,20 +13,29 @@ private:
 	std::unique_ptr<SquareGraphComp> graphicComp;
 	std::unique_ptr<SquarePhysicsComp> physicsComp;
 
+	float width;
+	float height;
+
+	vec2 velocity;
+	vec2 acceleration;
+	vec2 position; // this will init to random points with in screen dimensions in the constructor -PC
+
 	bool inUse = false;
 
 public:
-	Square();
+
+	Square(vec2& vel, vec2& acc, float& w, float& h);
+
 	virtual ~Square();
 
-	void Update(std::chrono::milliseconds ElapsedDeltaTime) override;
+	void Update(std::chrono::milliseconds ElapsedDeltaTime);
 
-	void Render(std::chrono::milliseconds ElapsedDeltaTime) override;
+	void Render(std::chrono::milliseconds ElapsedDeltaTime);
 
 	bool InUse() override;
 
-	glm::vec2 GetDirection() override;
+	glm::vec2 GetDirection();
 
-	glm::vec2 GetPoistion() override;
+	glm::vec2 GetPoistion();
 };
 

@@ -1,4 +1,7 @@
 #pragma once
+
+class GLsizei;
+
 class GameWindow
 {
 public:

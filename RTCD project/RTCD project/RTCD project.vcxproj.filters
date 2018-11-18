@@ -57,13 +57,16 @@
     <ClCompile Include="Src\Shapes\Circle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Src\GraphicsComp\TrangleGraphComp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Src\GraphicsComp\CircleGraphComp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Src\PhysicsComp\CirclePhysicsComp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\PhysicsComp\TrianglePhysicsComp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\GraphicsComp\TriangleGraphComp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -72,9 +75,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\App\ApplicationManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Src\Shapes\Shape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\Shapes\Square.h">
@@ -824,13 +824,19 @@
     <ClInclude Include="Src\Shapes\Circle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Src\GraphicsComp\TrangleGraphComp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Src\GraphicsComp\CircleGraphComp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\PhysicsComp\CirclePhysicsComp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\Shapes\Shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\PhysicsComp\TrianglePhysicsComp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\GraphicsComp\TriangleGraphComp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

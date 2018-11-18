@@ -6,21 +6,30 @@
 // using namespace added to .cpp as well as .h for consistency, as well as removed some C# usage of . operators.
 // params added to Render signature to take in to account the ElapsedDeltaTime
 // rand seed added for more "random" randomness, aye.. that one...
+// constructor changes to incorporate pos, vel, acc, and types changed to vec2`s
+// #includes added in .cpp as with the forward declarations
 #include "Circle.h"
 #include <glm\glm.hpp>
 #include <chrono>
+#include "Transform.h"
 #include "CircleGraphComp.h"
-#include "CirclePhyscisComp.h"
+#include "CirclePhysicsComp.h"
 #include <iostream>
 
 using namespace glm;
 
-Circle::Circle(float ix, float iy, float ir)
-	: graphicComp(), physicsComp()
+Circle::Circle(float& r, vec2& vel, vec2& acc)
+	: graphicComp(), physicsComp(), velocity(vel), acceleration(acc)
 {
+	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
+	float initY = std::rand() % (450 - 0 + 1) + 0;
+
 	ShapeTransform = std::make_shared<Transform>();
-	graphicComp = std::make_unique<CircleGraphComp>(ShapeTransform);
-	physicsComp = std::make_unique<CirclePhysicsComp>(ShapeTransform);
+	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
+	// set Shape transform to position initially -PC
+
+	graphicComp = std::make_unique<CircleGraphComp>(ShapeTransform, radius, velocity, acceleration);
+	physicsComp = std::make_unique<CirclePhysicsComp>(ShapeTransform,  radius, velocity, acceleration);
 	inUse = false;
 }
 
@@ -77,7 +86,7 @@ vec2 Circle::GetDirection()
 	return ShapeTransform->getLeftDir();
 }
 
-vec2 Circle::GetPosition()
+vec2 Circle::GetPoistion()
 {
 	return ShapeTransform->getPosition();
 }

@@ -178,7 +178,8 @@
     <ClCompile Include="Src\Shapes\Square.cpp" />
     <ClCompile Include="Src\Shapes\Transform.cpp" />
     <ClCompile Include="Src\Shapes\Triangle.cpp" />
-    <ClCompile Include="Src\GraphicsComp\TrangleGraphComp.cpp" />
+    <ClCompile Include="Src\GraphicsComp\TriangleGraphComp.cpp" />
+    <ClCompile Include="Src\PhysicsComp\TrianglePhysicsComp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\PhysicsComp\CirclePhysicsComp.h" />
@@ -435,7 +436,8 @@
     <ClInclude Include="Src\Shapes\Square.h" />
     <ClInclude Include="Src\Shapes\Transform.h" />
     <ClInclude Include="Src\Shapes\Triangle.h" />
-    <ClInclude Include="Src\GraphicsComp\TrangleGraphComp.h" />
+    <ClInclude Include="Src\GraphicsComp\TriangleGraphComp.h" />
+    <ClInclude Include="Src\PhysicsComp\TrianglePhysicsComp.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Src\Dependencies\glm\detail\func_common.inl" />

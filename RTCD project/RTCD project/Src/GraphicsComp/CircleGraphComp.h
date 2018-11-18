@@ -4,19 +4,23 @@ class CircleGraphComp :
 	public GraphicsComp
 {
 public:
-	CircleGraphComp(std::shared_ptr<Transform> ShapeTransform);
+	CircleGraphComp(std::shared_ptr<Transform> ShapeTransform, float& r, glm::vec2& vel, glm::vec2& acc);
 	virtual ~CircleGraphComp();
 
-	void Render(std::chrono::milliseconds ElapsedDeltaTime) override;
+	void Render(std::chrono::milliseconds ElapsedDeltaTime);
 
-	virtual void OnCollideSquare() override;
+	void OnCollideSquare();
 
-	virtual void OnCollideCircle() override;
+	void OnCollideCircle();
 
-	virtual void OnCollideTriangle() override;
+	void OnCollideTriangle();
 
 private:
 
+	float radius;
+
+	vec2 velocity;
+	vec2 acceleration;
 	std::shared_ptr<Transform> ShapeTransform;
 };
 

@@ -6,7 +6,7 @@
 class GraphicsComp
 {
 public:
-	GraphicsComp(Transform ShapeTransform);
+	GraphicsComp();
 	virtual ~GraphicsComp();
 
 	virtual void Render(std::chrono::milliseconds ElapsedDeltaTime) = 0; // render function which will be called on all of our shapes, and changed on each shape respectively -PC

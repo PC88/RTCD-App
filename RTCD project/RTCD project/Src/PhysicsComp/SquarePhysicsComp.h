@@ -2,12 +2,13 @@
 #include "PhysicsComp.h"
 #include "glm/vec2.hpp"
 #include "Transform.h"
+#include <memory>
 
 class SquarePhysicsComp :
 	protected PhysicsComp
 {
 public:
-	SquarePhysicsComp(std::shared_ptr<Transform> ShapeTransform);
+	SquarePhysicsComp(std::shared_ptr<Transform> ShapeTransform, vec2& vel, vec2& acc, float& w, float& h);
 
 	virtual ~SquarePhysicsComp();
 
@@ -26,7 +27,7 @@ private:
 	std::shared_ptr<Transform> ShapeTransform;
 	vec2 velocity;
 	vec2 acceleration;
-	vec3 colour;
-	//Transform transform; TODO
+	float width;
+	float height;
 };
 

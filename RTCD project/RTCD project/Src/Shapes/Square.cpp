@@ -3,16 +3,21 @@
 #include "SquareGraphComp.h"
 #include "Transform.h"
 #include "SquarePhysicsComp.h"
+#include <ctime>
 
 
 
-Square::Square()
-	: graphicComp(), physicsComp()
+Square::Square(vec2& vel, vec2& acc, float& w, float& h)
+	: graphicComp(), physicsComp(), acceleration(acc), velocity(vel), width(w), height(h) 
 {
+	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
+	float initY = std::rand() % (450 - 0 + 1) + 0;
+
 	ShapeTransform = std::make_shared<Transform>();
-	//TODO: set position to random within screen when constructed
-	graphicComp = std::make_unique<SquareGraphComp>(ShapeTransform); // set up graphics and physics comps - PC
-	physicsComp = std::make_unique<SquarePhysicsComp>(ShapeTransform);
+	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
+	// set Shape transform to position initially -PC
+	graphicComp = std::make_unique<SquareGraphComp>(ShapeTransform, velocity, acceleration, width, height); // set up graphics and physics comps -PC
+	physicsComp = std::make_unique<SquarePhysicsComp>(ShapeTransform, velocity, acceleration, width, height);
 
 	inUse = false;
 }

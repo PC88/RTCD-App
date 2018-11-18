@@ -37,7 +37,7 @@ ApplicationManager::~ApplicationManager()
 
 
 
-void ApplicationManager::ReshapeWindow(int width, int height)
+void ApplicationManager::ReshapeWindow(GLsizei width, GLsizei height) 
 {
 	m_window->Reshape(width, height);
 }

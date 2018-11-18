@@ -10,6 +10,7 @@
 #include "Shape.h"
 #include <memory>
 #include <glm\glm.hpp>
+#pragma once
 #include <chrono>
 
 class CircleGraphComp;
@@ -26,23 +27,25 @@ private:
 	std::unique_ptr<CircleGraphComp> graphicComp;
 	std::unique_ptr<CirclePhysicsComp> physicsComp;
 	bool inUse = false;
-	float x, y, r;
-	float dx, dy;
+	float radius;
+
+	vec2 velocity;
+	vec2 acceleration;
+	vec2 position; // this will init to random points with in screen dimensions in the constructor -PC
 
 
 public:
 
-	Circle(float x, float y, float r);
+	Circle(float& r, vec2& vel, vec2& acc);
 	virtual ~Circle();
 
-	void Update(std::chrono::milliseconds ElapsedDeltaTime) override;
+	void Update(std::chrono::milliseconds ElapsedDeltaTime);
 
-	void Render(std::chrono::milliseconds ElapsedDeltaTime) override;
+	void Render(std::chrono::milliseconds ElapsedDeltaTime);
 
 	bool InUse();
 
 	vec2 GetDirection();
-	vec2 GetPoistion()
-
+	vec2 GetPoistion();
 };
 

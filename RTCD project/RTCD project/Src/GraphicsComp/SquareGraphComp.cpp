@@ -1,13 +1,14 @@
 #include "SquareGraphComp.h"
 #include "Transform.h"
-#include <glm/gtx/transform.hpp>
 
 
 
-SquareGraphComp::SquareGraphComp(std::shared_ptr<Transform> ShapeTransform): ShapeTransform(ShapeTransform) // same name as these are pointers to the same object - PC
+
+
+SquareGraphComp::SquareGraphComp(std::shared_ptr<Transform> ShapeTransform, glm::vec2& vel, glm::vec2& acc, float& w, float& h)
+	: ShapeTransform(ShapeTransform), velocity(vel), acceleration(acc), width(w), height(h)
 {
 }
-
 
 SquareGraphComp::~SquareGraphComp()
 {

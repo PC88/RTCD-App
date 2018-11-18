@@ -7,7 +7,7 @@ class SquareGraphComp :
 	public GraphicsComp
 {
 public:
-	SquareGraphComp(std::shared_ptr<Transform> ShapeTransform);
+	SquareGraphComp(std::shared_ptr<Transform> ShapeTransform, vec2& vel, vec2& acc, float& w, float& h);
 	virtual ~SquareGraphComp();
 
 	 void Render(std::chrono::milliseconds ElapsedDeltaTime) override;
@@ -21,5 +21,10 @@ public:
 private:
 
 	std::shared_ptr<Transform> ShapeTransform;
+	glm::vec2 velocity;
+	glm::vec2 acceleration;
+	float width;
+	float height;
+
 };
 
