@@ -1,8 +1,8 @@
 #include "EventManager.h"
+#include "glm/vec2.hpp"
+#include "Shape.h"
 
-
-
-EventManager::EventManager()
+EventManager::EventManager(std::vector<Shape*>&)
 {
 }
 
@@ -11,18 +11,26 @@ EventManager::~EventManager()
 {
 }
 
-bool EventManager::AABBAABBCollision(PhysicsComp& A, PhysicsComp& B) // for now we just use this - PC
+bool EventManager::AABBAABBCollision(const PhysicsComp& A, const PhysicsComp& B) // for now we just use this - PC
 {
-	if (abs(A.getPosition().x - B.getPosition().x) > (A.GetPosition().x + B.GetPosition().x)) return false;
-	if (abs(A.getPosition().y - B.getPosition().y) > (A.GetPosition().y + B.GetPosition().y)) return false;
+	if (abs(A.GetPosition().x - B.GetPosition().x) > (A.GetPosition().x + B.GetPosition().x)) return false;
+	if (abs(A.GetPosition().y - B.GetPosition().y) > (A.GetPosition().y + B.GetPosition().y)) return false;
 	return true;
 }
 
-bool EventManager::CircleAABBCollision(PhysicsComp& c1, PhysicsComp& b)
+void EventManager::CheckCollisions()
 {
-	vec2 closestPoint;
-	ClosestPtPointAABB(c1.getPosition(), b, closestPoint);
-	if (distance(c1.getPosition(), closestPoint) <= c1.getRadius())
+}
+
+bool EventManager::CircleAABBCollision(const PhysicsComp& c1, const PhysicsComp& b)
+{
+	glm::vec2 closestPoint;
+	ClosestPtPointAABB(c1.GetPosition(), b, closestPoint);
+	if (distance(c1.GetPosition(), closestPoint))// <= c1.GetDirection()) --- this needs to have a get radius method here -PC
 		return true;
 	return false;
+}
+
+void EventManager::ClosestPtPointAABB(glm::vec2 & P, const PhysicsComp & b, glm::vec2 & q)
+{
 }

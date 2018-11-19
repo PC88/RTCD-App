@@ -10,11 +10,12 @@
 #include <iostream>
 #include <glm\glm.hpp>
 #include <chrono>
+#include "Shape.h"
+#include "glut\include\glut.h"
 
 class TriangleGraphComp;
 class TrianglePhysicsComp;
 class Transform;
-
 using namespace glm;
 
 class Triangle : public Shape
@@ -37,11 +38,11 @@ private:
 
 public:
 
-	~Triangle() {};
+	virtual ~Triangle();
 	Triangle(vec2& p1, vec2& p2, vec2& p3, vec2& vel, vec2& acc);
 
-	void Update(std::chrono::milliseconds ElapsedDeltaTime);
-	void Render(std::chrono::milliseconds ElapsedDeltaTime);
+	void Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei, height);
+	void Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei, height);
 	vec2 GetDirection();
 	vec2 GetPosition();
 	int GetType();

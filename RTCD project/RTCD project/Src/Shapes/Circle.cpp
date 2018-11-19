@@ -19,7 +19,7 @@
 using namespace glm;
 
 Circle::Circle(float& r, vec2& vel, vec2& acc)
-	: graphicComp(), physicsComp(), velocity(vel), acceleration(acc)
+	: velocity(vel), acceleration(acc)
 {
 	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
 	float initY = std::rand() % (450 - 0 + 1) + 0;
@@ -28,7 +28,7 @@ Circle::Circle(float& r, vec2& vel, vec2& acc)
 
 	ShapeTransform = std::make_shared<Transform>();
 	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
-	// set Shape transform to position initially -PC
+	ShapeTransform->Translate(position);
 
 	graphicComp = std::make_unique<CircleGraphComp>(ShapeTransform, radius, velocity, acceleration);
 	physicsComp = std::make_unique<CirclePhysicsComp>(ShapeTransform,  radius, velocity, acceleration);

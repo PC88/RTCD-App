@@ -14,7 +14,7 @@
 
 
 Triangle::Triangle(glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, glm::vec2& acc)
-	: graphicComp(), physicsComp(), pointOne(p1), pointTwo(p2), pointThree(p3), velocity(vel), acceleration(acc)
+	: pointOne(p1), pointTwo(p2), pointThree(p3), velocity(vel), acceleration(acc)
 {
 	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
 	float initY = std::rand() % (450 - 0 + 1) + 0;
@@ -23,7 +23,7 @@ Triangle::Triangle(glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, 
 
 	ShapeTransform = std::make_shared<Transform>();
 	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
-	// set Shape transform to position initially -PC
+	ShapeTransform->Translate(position);
 	graphicComp = std::make_unique<TriangleGraphComp>(ShapeTransform, pointOne, pointTwo, pointThree);
 	physicsComp = std::make_unique<TrianglePhysicsComp>(ShapeTransform, pointOne, pointTwo, pointThree);
 	inUse = false;
@@ -32,15 +32,15 @@ Triangle::Triangle(glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, 
 Triangle::~Triangle()
 {
 }
-void Triangle::Update(std::chrono::milliseconds ElapsedDeltaTime)
+void Triangle::Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
 {
-	physicsComp->Update(ElapsedDeltaTime);
+	physicsComp->Update(ElapsedDeltaTime, width, height);
 }
 
-void Triangle::Render(std::chrono::milliseconds ElapsedDeltaTime)
+void Triangle::Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
 {
 
-	graphicComp->Render(ElapsedDeltaTime);
+	graphicComp->Render(ElapsedDeltaTime, width, height);
 
 	/*glBegin(GL_POLYGON);
 	glVertex2f(x, y);

@@ -56,7 +56,8 @@ void ShapePool::Load() //its either this way or 500+ lines of manual code it see
 		float height = 3.0f;
 		glm::vec2 vel;
 		glm::vec2 acc;
-		squaresInPool[i] = new Square(acc, vel, width, height);
+		//squaresInPool[i] = new Square(acc, vel, width, height);
+		shapes.emplace_back(new Square(acc, vel, width, height));
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{

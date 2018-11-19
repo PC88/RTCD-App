@@ -1,11 +1,16 @@
 #pragma once
+#include <vector>
+#include "PhysicsComp.h"
+#include "glm/vec2.hpp"
+
+class Shape;
 class EventManager
 {
 public:
 
-	bool CircleAABBCollision(PhysicsComp& c1, PhysicsComp& b);
-	void ClosestPtPointAABB(vec2& P, PhysicsComp& b, vec2& q);
-	bool AABBAABBCollision(PhysicsComp& A, PhysicsComp& B);
+	bool CircleAABBCollision(const PhysicsComp& c1, const PhysicsComp& b);
+	void ClosestPtPointAABB(glm::vec2& P, const PhysicsComp& b, glm::vec2& q);
+	bool AABBAABBCollision(const PhysicsComp& A, const PhysicsComp& B);
 
 	void CheckCollisions();
 

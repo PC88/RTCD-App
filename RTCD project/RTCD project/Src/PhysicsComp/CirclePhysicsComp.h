@@ -1,5 +1,7 @@
 #pragma once
 #include "PhysicsComp.h"
+#include <memory>
+
 class CirclePhysicsComp :
 	public PhysicsComp
 {

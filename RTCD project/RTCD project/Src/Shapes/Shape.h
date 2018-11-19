@@ -4,7 +4,7 @@
 #include <chrono>
 
 class Transform;
-
+enum TypeOfCreatedObject { Circle, Triangle, Square }; // this is reflection meta data which will tell the event manager what type the super object is -PC
 class Shape
 {
 public:
@@ -34,7 +34,7 @@ protected:
 
 	std::shared_ptr<Transform> ShapeTransform; // all shapes will have this TODO better way to do this than accessorfunction accessing an accessor function -PC
 
-	enum TypeOfCreatedObject { Circle, Square, Triangle }; // this is reflection meta data which will tell the event manager what type the super object is -PC
+	
 	TypeOfCreatedObject Creator;
 
 };
