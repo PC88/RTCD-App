@@ -28,7 +28,7 @@ public:
 
 	virtual ~Square();
 
-	void Update(std::chrono::milliseconds ElapsedDeltaTime);
+	void Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
 
 	void Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
 
