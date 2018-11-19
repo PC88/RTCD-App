@@ -24,6 +24,8 @@ Circle::Circle(float& r, vec2& vel, vec2& acc)
 	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
 	float initY = std::rand() % (450 - 0 + 1) + 0;
 
+	Creator = TypeOfCreatedObject::Circle; // define meta data -PC
+
 	ShapeTransform = std::make_shared<Transform>();
 	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
 	// set Shape transform to position initially -PC
@@ -37,15 +39,15 @@ Circle::~Circle()
 {
 }
 
-void Circle::Update(std::chrono::milliseconds ElapsedDeltaTime)
+void Circle::Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
 {
-	physicsComp->Update(ElapsedDeltaTime);
+	physicsComp->Update(ElapsedDeltaTime, width, height);
 }
 
 
-void Circle::Render(std::chrono::milliseconds ElapsedDeltaTime)
+void Circle::Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
 {
-	graphicComp->Render(ElapsedDeltaTime);
+	graphicComp->Render(ElapsedDeltaTime,  width, height);
 
 	/*glBegin(GL_LINE_LOOP);
 	for (int i = 0; i < 30; i++)
@@ -81,6 +83,29 @@ bool Circle::InUse()
 	}
 
 }
+int Circle::GetType()
+{
+	switch (Creator)
+	{
+	int typenum;
+	case TypeOfCreatedObject::Circle:
+		typenum = 0;
+		return typenum;
+		// gl code for color here
+		break;
+	case TypeOfCreatedObject::Triangle:
+		typenum = 1;
+		return typenum;
+		// gl code for color here
+		break;
+	case TypeOfCreatedObject::Square:
+		typenum = 2;
+		return typenum;
+		// gl code for color here
+		break;
+	}
+}
+
 vec2 Circle::GetDirection()
 {
 	return ShapeTransform->getLeftDir();

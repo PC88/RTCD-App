@@ -162,6 +162,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Src\App\EventSystem\EventManager.cpp" />
+    <ClCompile Include="Src\App\SingletonGraphStates.cpp" />
     <ClCompile Include="Src\PhysicsComp\CirclePhysicsComp.cpp" />
     <ClCompile Include="Src\GraphicsComp\CircleGraphComp.cpp" />
     <ClCompile Include="Src\Shapes\Circle.cpp" />
@@ -182,6 +184,8 @@
     <ClCompile Include="Src\PhysicsComp\TrianglePhysicsComp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Src\App\EventSystem\EventManager.h" />
+    <ClInclude Include="Src\App\SingletonGraphStates.h" />
     <ClInclude Include="Src\PhysicsComp\CirclePhysicsComp.h" />
     <ClInclude Include="Src\GraphicsComp\CircleGraphComp.h" />
     <ClInclude Include="Src\Shapes\Circle.h" />

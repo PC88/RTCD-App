@@ -13,6 +13,8 @@ Square::Square(vec2& vel, vec2& acc, float& w, float& h)
 	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
 	float initY = std::rand() % (450 - 0 + 1) + 0;
 
+	Creator = TypeOfCreatedObject::Square; // define meta data -PC
+
 	ShapeTransform = std::make_shared<Transform>();
 	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
 	// set Shape transform to position initially -PC
@@ -32,9 +34,9 @@ void Square::Update(std::chrono::milliseconds ElapsedDeltaTime)
 	physicsComp->Update(ElapsedDeltaTime);
 }
 
-void Square::Render(std::chrono::milliseconds ElapsedDeltaTime)
+void Square::Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
 {
-	graphicComp->Render(ElapsedDeltaTime);
+	graphicComp->Render(ElapsedDeltaTime, width, height);
 }
 
 
@@ -47,6 +49,29 @@ bool Square::InUse()
 	else
 	{ 
 		return true;
+	}
+}
+
+int Square::GetType()
+{
+	switch (Creator)
+	{
+		int typenum;
+	case TypeOfCreatedObject::Circle:
+		typenum = 0;
+		return typenum;
+		// gl code for color here
+		break;
+	case TypeOfCreatedObject::Triangle:
+		typenum = 1;
+		return typenum;
+		// gl code for color here
+		break;
+	case TypeOfCreatedObject::Square:
+		typenum = 2;
+		return typenum;
+		// gl code for color here
+		break;
 	}
 }
 

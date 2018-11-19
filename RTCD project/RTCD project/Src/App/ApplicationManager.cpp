@@ -1,13 +1,14 @@
 #include "ApplicationManager.h"
 #include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp" // Perhaps how we get the transform Matrix in to main application to be passed around.
 #include "glut/include/glut.h" // Glut include
 #include <memory>
-#include "ObjectPool/ShapePool.h"
+#include "ObjectPool\ShapePool.h"
 #include <time.h>
 #include <chrono>
 #include <iostream>
 #include <vector>
+#include "SingletonGraphStates.h"
+#include "Transform.h"
 
 //void ApplicationManager::Initialise(std::shared_ptr<GameWindow> appWindow) // no fucking clue TODO fix this "is not compatible error" -PC
 //{                                                                          // encapsulation, later this may be useful - PC
@@ -20,7 +21,8 @@ std::shared_ptr<ApplicationManager> AppManager = std::make_shared<ApplicationMan
 std::shared_ptr<GameWindow> gameWindow = std::make_shared<GameWindow>("RTCD First Build", 640, 450, 50, 50);
 std::unique_ptr<ShapePool> Pool = std::make_unique<ShapePool>();
 std::chrono::milliseconds ElapsedDeltaTime;
-
+GLsizei width = 640;
+GLsizei height = 450; // this is also terrible practise but hey if im using a set of globals I might as well use these -PC
 
 ApplicationManager::ApplicationManager()
 {
@@ -58,7 +60,7 @@ void initGL()
 
 void display()
 {
-	Pool->Display(ElapsedDeltaTime);
+	Pool->Display(ElapsedDeltaTime, width, height);
 }
 
 void update(int value) // value not used here as I am using the global "ElapsedDeltaTime" to go over GLUTS API in the timer and display callbacks -PC
@@ -71,7 +73,7 @@ void GLUTRenderer(std::chrono::milliseconds ElapsedDeltaTime)
 	// this really shows why glut is a terrible API to use
 	// I am having to use the time globally - not good practice at all by any means, unless I want to go in to GLUT API files and change the following:
 	// GLUTAPI void APIENTRY glutDisplayFunc(void (GLUTCALLBACK *func)(void));
-	// GLUTAPI void APIENTRY glutTimerFunc(unsigned int millis, void (GLUTCALLBACK *func)(int value), int value);
+	// GLUTAPI void APIENTRY glutTimerFunc(unsigned int millis, void (GLUTCALLBACK *func)(int value), int value); -PC
 
 	glutDisplayFunc(display);		// Register callback handler for window re-paint
 	glutReshapeFunc(reshape);		// Register callback handler for window re-shape - goes to global reshape, then Appman::Reshapewindow, then m_window Reshape // this is bad -PC JankAF
@@ -89,9 +91,7 @@ int main(int argc, char** argv)
 	// create pool -PC
 	Pool->create(); // creates 4 arrays 1 dynamic 3 standard which are loaded in to the dynamic for abstract iteration -PC
 
-	// iterate through the object pool and update and call Update(), Render(), and Collide() on all shape composite objects, graphics and physics respectivley. - PC
-	//title, width, height, posX, posY
-
+	SingletonGraphStates::instance().initialise(); // init singleton
 
 	glutInit(&argc, argv); // INIT GLUT 
 	auto LastTime = std::chrono::steady_clock::now(); // better timer than LABs -PC
@@ -103,6 +103,5 @@ int main(int argc, char** argv)
 		LastTime = CurrentTime;
 		GLUTRenderer(ElapsedDeltaTime); // This in a similar form - although not the same as LAB`s hence the Param. -PC
 	}
-	// Render on shapes graphComp
 	return 0;
 }

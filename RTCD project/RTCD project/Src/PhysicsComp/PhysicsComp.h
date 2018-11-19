@@ -17,6 +17,7 @@ public:
 
 	virtual glm::vec2 GetPosition() = 0; // position and direction are here just for debugging, they should have 
 	                                     // the same value as shape transform -PC
-	virtual glm::vec2 GetDirection() = 0; 
+	virtual glm::vec2 GetDirection() = 0;
+
 };
 

@@ -17,7 +17,7 @@ class Transform;
 
 using namespace glm;
 
-class Triangle
+class Triangle : public Shape
 {
 private:
 
@@ -37,7 +37,6 @@ private:
 
 public:
 
-
 	~Triangle() {};
 	Triangle(vec2& p1, vec2& p2, vec2& p3, vec2& vel, vec2& acc);
 
@@ -45,5 +44,6 @@ public:
 	void Render(std::chrono::milliseconds ElapsedDeltaTime);
 	vec2 GetDirection();
 	vec2 GetPosition();
+	int GetType();
 	bool InUse();
 };

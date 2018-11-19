@@ -19,6 +19,8 @@ Triangle::Triangle(glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, 
 	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
 	float initY = std::rand() % (450 - 0 + 1) + 0;
 
+	Creator = TypeOfCreatedObject::Triangle; // define meta data -PC
+
 	ShapeTransform = std::make_shared<Transform>();
 	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
 	// set Shape transform to position initially -PC
@@ -56,6 +58,29 @@ vec2 Triangle::GetDirection()
 vec2 Triangle::GetPosition()
 {
 	return ShapeTransform->getPosition();
+}
+
+int Triangle::GetType()
+{
+	switch (Creator) // why is this undefined -PC
+	{
+		int typenum;
+	case TypeOfCreatedObject::Circle:
+		typenum = 0;
+		return typenum;
+		// gl code for color here
+		break;
+	case TypeOfCreatedObject::Triangle:
+		typenum = 1;
+		return typenum;
+		// gl code for color here
+		break;
+	case TypeOfCreatedObject::Square:
+		typenum = 2;
+		return typenum;
+		// gl code for color here
+		break;
+	}
 }
 
 

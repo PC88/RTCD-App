@@ -69,6 +69,12 @@
     <ClCompile Include="Src\GraphicsComp\TriangleGraphComp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Src\App\SingletonGraphStates.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\App\EventSystem\EventManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\App\ObjectPool\ShapePool.h">
@@ -837,6 +843,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Src\GraphicsComp\TriangleGraphComp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\App\SingletonGraphStates.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Src\App\EventSystem\EventManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

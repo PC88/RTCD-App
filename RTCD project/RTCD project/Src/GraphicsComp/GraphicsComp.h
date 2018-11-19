@@ -9,7 +9,7 @@ public:
 	GraphicsComp();
 	virtual ~GraphicsComp();
 
-	virtual void Render(std::chrono::milliseconds ElapsedDeltaTime) = 0; // render function which will be called on all of our shapes, and changed on each shape respectively -PC
+	virtual void Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height) = 0; // render function which will be called on all of our shapes, and changed on each shape respectively -PC
 
 
 	/// collision reaction code, graphic element ///

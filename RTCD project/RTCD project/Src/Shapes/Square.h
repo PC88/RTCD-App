@@ -30,9 +30,11 @@ public:
 
 	void Update(std::chrono::milliseconds ElapsedDeltaTime);
 
-	void Render(std::chrono::milliseconds ElapsedDeltaTime);
+	void Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
 
 	bool InUse() override;
+
+	int GetType();
 
 	glm::vec2 GetDirection();
 

@@ -8,6 +8,7 @@ class Transform;
 class Circle;
 class Square;
 class Triangle;
+class GLsizei; // Why I have to do this is just nuts.
 
 class ShapePool
 {
@@ -17,9 +18,9 @@ public:
 
 	void create();
 
-	void Display(std::chrono::milliseconds ElapsedDeltaTime);
+	void Display(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
 
-	void Update(std::chrono::milliseconds ElapsedDeltaTime);
+	void Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
 
 	void Load();
 

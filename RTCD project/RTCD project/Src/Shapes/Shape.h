@@ -23,7 +23,7 @@ public:
 
 	virtual glm::vec2 GetPoistion() = 0;
 
-
+	virtual int GetType() = 0; // this will be reflect the value of the Enum thus giving us the type without casting. -PC
 private:
 
 	glm::vec2 direction;
@@ -33,5 +33,8 @@ private:
 protected:
 
 	std::shared_ptr<Transform> ShapeTransform; // all shapes will have this TODO better way to do this than accessorfunction accessing an accessor function -PC
+
+	enum TypeOfCreatedObject { Circle, Square, Triangle }; // this is reflection meta data which will tell the event manager what type the super object is -PC
+	TypeOfCreatedObject Creator;
 
 };
