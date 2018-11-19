@@ -32,7 +32,7 @@ void ShapePool::create()
 	shapes.insert(shapes.end(), std::begin(trianglesInPool), std::end(trianglesInPool));
 }
 
-void ShapePool::Display(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void ShapePool::Display(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	for (std::vector<Shape*>::iterator it = shapes.begin; it < shapes.end; it++)
 	{
@@ -40,7 +40,7 @@ void ShapePool::Display(std::chrono::milliseconds ElapsedDeltaTime, GLsizei widt
 	}
 }
 
-void ShapePool::Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void ShapePool::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	for (std::vector<Shape*>::iterator it = shapes.begin; it < shapes.end; it++)
 	{

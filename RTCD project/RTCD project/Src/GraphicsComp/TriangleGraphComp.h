@@ -11,7 +11,7 @@ public:
 	TriangleGraphComp(std::shared_ptr<Transform> ShapeTransform, glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, glm::vec2& acc);
 	virtual ~TriangleGraphComp();
 
-	void Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height) ;
+	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) ;
 
 	virtual void OnCollideSquare();
 

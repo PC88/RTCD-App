@@ -31,6 +31,6 @@ bool EventManager::CircleAABBCollision(const PhysicsComp& c1, const PhysicsComp&
 	return false;
 }
 
-void EventManager::ClosestPtPointAABB(glm::vec2 & P, const PhysicsComp & b, glm::vec2 & q)
+void EventManager::ClosestPtPointAABB(glm::vec2 const &  P, const PhysicsComp & b, glm::vec2 & q)
 {
 }

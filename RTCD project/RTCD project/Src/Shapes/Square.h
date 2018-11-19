@@ -28,9 +28,9 @@ public:
 
 	virtual ~Square();
 
-	void Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
+	void Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 
-	void Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
+	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 
 	bool InUse() override;
 

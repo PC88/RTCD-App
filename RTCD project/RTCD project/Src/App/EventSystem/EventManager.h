@@ -9,7 +9,7 @@ class EventManager
 public:
 
 	bool CircleAABBCollision(const PhysicsComp& c1, const PhysicsComp& b);
-	void ClosestPtPointAABB(glm::vec2& P, const PhysicsComp& b, glm::vec2& q);
+	void ClosestPtPointAABB(glm::vec2 const & P, const PhysicsComp& b, glm::vec2& q);
 	bool AABBAABBCollision(const PhysicsComp& A, const PhysicsComp& B);
 
 	void CheckCollisions();

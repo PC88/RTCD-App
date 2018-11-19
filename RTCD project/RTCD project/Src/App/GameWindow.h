@@ -1,7 +1,5 @@
 #pragma once
 
-class GLsizei;
-
 class GameWindow
 {
 public:
@@ -11,7 +9,7 @@ public:
 	{		
 	}
 
-	void Reshape(GLsizei width, GLsizei height);
+	void Reshape(int width, int height);
 	int getWidth();
 	int getHeight();
 private:

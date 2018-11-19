@@ -15,7 +15,7 @@
 
 class CircleGraphComp;
 class CirclePhysicsComp;
-class GLsizei;
+//class int;
 
 using namespace glm;
 
@@ -40,9 +40,9 @@ public:
 	Circle(float& r, vec2& vel, vec2& acc);
 	virtual ~Circle();
 
-	void Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
+	void Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 
-	void Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
+	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 
 	bool InUse();
 

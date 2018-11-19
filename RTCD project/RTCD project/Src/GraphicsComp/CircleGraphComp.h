@@ -7,7 +7,7 @@ public:
 	CircleGraphComp(std::shared_ptr<Transform> ShapeTransform, float& r, glm::vec2& vel, glm::vec2& acc);
 	virtual ~CircleGraphComp();
 
-	void Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
+	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 
 	void OnCollideSquare();
 

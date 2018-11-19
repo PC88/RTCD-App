@@ -32,12 +32,12 @@ Triangle::Triangle(glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, 
 Triangle::~Triangle()
 {
 }
-void Triangle::Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void Triangle::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	physicsComp->Update(ElapsedDeltaTime, width, height);
 }
 
-void Triangle::Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void Triangle::Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 
 	graphicComp->Render(ElapsedDeltaTime, width, height);

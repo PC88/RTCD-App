@@ -13,13 +13,13 @@ public:
 
 	virtual ~SquarePhysicsComp();
 
-	void Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height) ;
+	void Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) ;
 
 	void Move(glm::vec2 translation);
 
-	void TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height);
+	void TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 
-	glm::vec2 GetPosition(); // position and direction are here just for debugging, 
+	glm::vec2 GetPosition() const; // position and direction are here just for debugging, 
 	                                  // they should have the same value as shape transform -PC
 	glm::vec2 GetDirection();
 

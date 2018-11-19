@@ -10,7 +10,7 @@ public:
 	SquareGraphComp(std::shared_ptr<Transform> ShapeTransform, glm::vec2& vel, glm::vec2& acc, float& w, float& h);
 	virtual ~SquareGraphComp();
 
-	 void Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height) ;
+	 void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) ;
 
 	 virtual void OnCollideSquare() override; 
 

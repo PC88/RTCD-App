@@ -13,7 +13,7 @@ SquarePhysicsComp::~SquarePhysicsComp()
 {
 }
 
-void SquarePhysicsComp::Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void SquarePhysicsComp::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	TCVelocityVerletSolver(ElapsedDeltaTime, width, height); // TODO use width height here -PC
 }
@@ -23,14 +23,14 @@ void SquarePhysicsComp::Move(glm::vec2 translation)
 	ShapeTransform->Translate(translation); // TODO transform may not be the same as the squares -PC
 }
 
-void SquarePhysicsComp::TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void SquarePhysicsComp::TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	Move(ElapsedDeltaTime * velocity + 0.5f * ElapsedDeltaTime * ElapsedDeltaTime * acceleration);
 	vec2 velInBetween = velocity + 0.5f * ElapsedDeltaTime * acceleration; // cast/the types here, std::milli has no converttype ASK -PC
 	velocity = velInBetween + 0.5f * acceleration; // add in boundary checks here TODO -PC
 }
 
-glm::vec2 SquarePhysicsComp::GetPosition()
+glm::vec2 SquarePhysicsComp::GetPosition() const
 {
 	return ShapeTransform->getPosition(); // TODO fix this transform - PC
 }

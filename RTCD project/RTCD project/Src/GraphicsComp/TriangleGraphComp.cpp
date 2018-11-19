@@ -12,7 +12,7 @@ TriangleGraphComp::~TriangleGraphComp()
 {
 }
 
-void TriangleGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height) // COPY PASTE OF SQUARE GRAPHCOMP
+void TriangleGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) // COPY PASTE OF SQUARE GRAPHCOMP
 {
 	position = ShapeTransform->getPosition();
 	glLoadIdentity();				// Reset model-view matrix

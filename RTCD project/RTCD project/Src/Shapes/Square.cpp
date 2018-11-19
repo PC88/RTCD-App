@@ -29,12 +29,12 @@ Square::~Square()
 {
 }
 
-void Square::Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void Square::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	physicsComp->Update(ElapsedDeltaTime, width, height);
 }
 
-void Square::Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void Square::Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	graphicComp->Render(ElapsedDeltaTime, width, height);
 }

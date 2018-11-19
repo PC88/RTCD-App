@@ -39,13 +39,13 @@ Circle::~Circle()
 {
 }
 
-void Circle::Update(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void Circle::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	physicsComp->Update(ElapsedDeltaTime, width, height);
 }
 
 
-void Circle::Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void Circle::Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	graphicComp->Render(ElapsedDeltaTime,  width, height);
 

@@ -15,7 +15,7 @@ SquareGraphComp::~SquareGraphComp()
 {
 }
 
-void SquareGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void SquareGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	position = ShapeTransform->getPosition();
 	glLoadIdentity();				// Reset model-view matrix

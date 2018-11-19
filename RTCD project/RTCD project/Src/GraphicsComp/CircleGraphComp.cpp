@@ -2,7 +2,7 @@
 #include "Transform.h"
 #include "SingletonGraphStates.h"
 
-#include "glm/gtc/constants.inl" // this makes no sense as to why this dosent work
+#include "glm/gtc/constants.hpp" // this makes no sense as to why this dosent work
 #include "glut/include/glut.h" // makes even less sense
 
 CircleGraphComp::CircleGraphComp(std::shared_ptr<Transform> ShapeTransform, float& r, glm::vec2& vel, glm::vec2& acc)
@@ -15,7 +15,7 @@ CircleGraphComp::~CircleGraphComp()
 {
 }
 
-void CircleGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, GLsizei width, GLsizei height)
+void CircleGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	position = ShapeTransform->getPosition();
 	glLoadIdentity();				// Reset model-view matrix

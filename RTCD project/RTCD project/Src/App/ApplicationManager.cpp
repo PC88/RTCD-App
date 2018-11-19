@@ -21,8 +21,8 @@ std::shared_ptr<ApplicationManager> AppManager = std::make_shared<ApplicationMan
 std::shared_ptr<GameWindow> gameWindow = std::make_shared<GameWindow>("RTCD First Build", 640, 450, 50, 50);
 std::unique_ptr<ShapePool> Pool = std::make_unique<ShapePool>();
 std::chrono::milliseconds ElapsedDeltaTime;
-GLsizei width = 640;
-GLsizei height = 450; // this is also terrible practise but hey if im using a set of globals I might as well use these -PC
+int width = 640;
+int height = 450; // this is also terrible practise but hey if im using a set of globals I might as well use these -PC
 
 ApplicationManager::ApplicationManager()
 {
@@ -39,7 +39,7 @@ ApplicationManager::~ApplicationManager()
 
 
 
-void ApplicationManager::ReshapeWindow(GLsizei width, GLsizei height) 
+void ApplicationManager::ReshapeWindow(int width, int height) 
 {
 	m_window->Reshape(width, height);
 }
@@ -47,7 +47,7 @@ void ApplicationManager::ReshapeWindow(GLsizei width, GLsizei height)
 /////////////////////////////// global functions -PC ALL JANK QUITE POSSIBLY CHANGE THESE ///////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void reshape(GLsizei width, GLsizei height)
+void reshape(int width, int height)
 {
 	AppManager->ReshapeWindow(width, height); // this is bad -PC JankAF
 }
