@@ -9,7 +9,7 @@ public:
 	PhysicsComp();
 	virtual ~PhysicsComp();
 
-	virtual void Update(std::chrono::milliseconds ElapsedDeltaTime) = 0;
+	virtual void Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) = 0;
 
 	virtual void Move(glm::vec2 translation) = 0;
 

@@ -9,6 +9,7 @@
 #include <vector>
 #include "SingletonGraphStates.h"
 #include "Transform.h"
+#include "GameWindow.h"
 
 //void ApplicationManager::Initialise(std::shared_ptr<GameWindow> appWindow) // no fucking clue TODO fix this "is not compatible error" -PC
 //{                                                                          // encapsulation, later this may be useful - PC
@@ -65,7 +66,7 @@ void display()
 
 void update(int value) // value not used here as I am using the global "ElapsedDeltaTime" to go over GLUTS API in the timer and display callbacks -PC
 {
-	Pool->Update(ElapsedDeltaTime);
+	Pool->Update(ElapsedDeltaTime, width, height);
 }
 
 void GLUTRenderer(std::chrono::milliseconds ElapsedDeltaTime)

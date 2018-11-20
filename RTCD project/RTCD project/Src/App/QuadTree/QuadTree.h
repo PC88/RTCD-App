@@ -2,49 +2,41 @@
 // First attempt at QuadTree - PC
 
 
-//class Rectangle // AABB for Quad Tree
-//{
-//
-//public:
-//	Rectangle(int x, int y, int w, int h)
-//	{
-//	};
-//
-//	~Rectangle()
-//	{
-//	};
-//
-//private:
-//	int x;
-//	int y;
-//	int w;
-//	int h;
-//
-//
-//
-//};
-//
-//class QuadTree
-//{
-//
-//private:
-//
-//	int Capacity;
-//	Rectangle Boundary;
-//
-//public:
-//	QuadTree(const Rectangle& Boundary, int Capacity)
-//		:Boundary(x,y,w,h)
-//	{
-//	};
-//	~QuadTree();
-//
-//	void Insert();
-//
-//	void SubDevide();
-//
-//};
+struct Node// AABB for Quad Tree
+{
 
+public:
+	Node(float halfWidth)
+	{
+	};
 
+	virtual ~Node()
+	{
+	};
 
+private:
+	float halfWidth;
+	Node* pChild[4];
+	//GameObject* pObjList, should this be the literal pool of objects passed as param? -PC
+};
+
+class QuadTree
+{
+
+private:
+
+	int Capacity;
+	Node Boundary;
+
+public:
+	QuadTree(const Node& Boundary, int pool)
+	{
+	};
+	~QuadTree();
+
+	void Insert();
+
+	void SubDevide();
+
+};
 

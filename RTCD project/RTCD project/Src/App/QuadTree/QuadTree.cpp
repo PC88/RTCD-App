@@ -3,34 +3,34 @@
 
 /////////// RECTANGLE STUFF //////////// - PC
 
-//Rectangle::Rectangle(int x, int y, int w, int)// AABB for Quad Tree
-//{
-//}
-//
-//Rectangle::~Rectangle()
-//{
-//
-//};
-//
-//QuadTree::QuadTree(const Rectangle& Boundary, int Capacity)
-//{
-//}
-//
-//
-//QuadTree::~QuadTree()
-//{
-//}
-//
-///////////// PAST CONSTRUCTORS //////////// - PC
-//
-//void QuadTree::Insert()
-//{
-//	
-//}
-//
-//void QuadTree::SubDevide()
-//{
-//}
+Node::Node(float halfWidth)// AABB for Quad Tree
+{
+}
+
+Node::~Node()
+{
+
+};
+
+QuadTree::QuadTree(const Node& Boundary, int poolsize)
+	:Boundary(Boundary), Capacity(pool)
+{
+}
+
+
+QuadTree::~QuadTree()
+{
+}
+
+
+void QuadTree::Insert()
+{
+	
+}
+
+void QuadTree::SubDevide()
+{
+}
 
 
 
