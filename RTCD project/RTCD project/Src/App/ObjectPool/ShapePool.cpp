@@ -34,9 +34,9 @@ void ShapePool::create()
 
 void ShapePool::Display(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
-	for (std::vector<Shape*>::iterator it = shapes.begin; it < shapes.end; it++)
+	for (std::vector<Shape*[POOL_SIZE]>::iterator it = shapes.begin(); it < shapes.end(); it++)
 	{
-		(*it)->Render(ElapsedDeltaTime, width, height); // just call render which CALLS render on the respective graphic comps via call back -PC
+		(**it)->Render(ElapsedDeltaTime, width, height); // just call render which CALLS render on the respective graphic comps via call back -PC
 	}
 }
 

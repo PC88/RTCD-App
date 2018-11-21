@@ -23,7 +23,7 @@ std::shared_ptr<GameWindow> gameWindow = std::make_shared<GameWindow>("RTCD Firs
 std::unique_ptr<ShapePool> Pool = std::make_unique<ShapePool>();
 std::chrono::milliseconds ElapsedDeltaTime;
 int width = 640;
-int height = 450; // this is also terrible practise but hey if im using a set of globals I might as well use these -PC
+int height = 450; // this is also terrible practice but hey if im using a set of globals I might as well use these -PC
 
 ApplicationManager::ApplicationManager()
 {
