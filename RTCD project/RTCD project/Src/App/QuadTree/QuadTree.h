@@ -14,8 +14,7 @@ public:
 	virtual ~Node()
 	{
 	};
-
-private:
+	// can be public because its a struct?
 	float halfWidth;
 	glm::vec2 centre;
 	Node* pChild[4];

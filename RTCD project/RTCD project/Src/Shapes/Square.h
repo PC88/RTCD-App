@@ -13,8 +13,7 @@ private:
 	std::unique_ptr<SquareGraphComp> graphicComp;
 	std::unique_ptr<SquarePhysicsComp> physicsComp;
 
-	float width;
-	float height;
+	float halfwidth;
 
 	vec2 velocity;
 	vec2 acceleration;
@@ -24,7 +23,7 @@ private:
 
 public:
 
-	Square(vec2& vel, vec2& acc, float& w, float& h);
+	Square(vec2& vel, vec2& acc, float& hw);
 
 	virtual ~Square();
 
@@ -37,6 +36,8 @@ public:
 	bool InUse();
 
 	int GetType();
+
+	float GetDistanceMetric();
 
 	glm::vec2 GetDirection();
 

@@ -13,8 +13,11 @@
 #include <memory>
 
 
-Triangle::Triangle(glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, glm::vec2& acc)
-	: pointOne(p1), pointTwo(p2), pointThree(p3), velocity(vel), acceleration(acc)
+Triangle::Triangle(float& hw, glm::vec2& vel, glm::vec2& acc)
+	: halfwidth(hw), velocity(vel), acceleration(acc),
+	topPoint(ShapeTransform->getPosition().x, ShapeTransform->getPosition().y - halfwidth),
+	leftPoint(ShapeTransform->getPosition().x - halfwidth, ShapeTransform->getPosition().y + halfwidth), // this is defined because of philosophy of the project, it does quite literally do nothing -PC
+	rightPoint(ShapeTransform->getPosition().x + halfwidth, ShapeTransform->getPosition().y - halfwidth)
 {
 	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
 	float initY = std::rand() % (450 - 0 + 1) + 0;
@@ -24,8 +27,8 @@ Triangle::Triangle(glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, 
 	ShapeTransform = std::make_shared<Transform>();
 	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
 	ShapeTransform->Translate(position);
-	graphicComp = std::make_unique<TriangleGraphComp>(ShapeTransform, pointOne, pointTwo, pointThree, velocity, acceleration);
-	physicsComp = std::make_unique<TrianglePhysicsComp>(ShapeTransform, pointOne, pointTwo, pointThree, velocity, acceleration);
+	graphicComp = std::make_unique<TriangleGraphComp>(ShapeTransform, halfwidth, velocity, acceleration);
+	physicsComp = std::make_unique<TrianglePhysicsComp>(ShapeTransform, halfwidth, velocity, acceleration);
 	inUse = false;
 }
 
@@ -60,6 +63,14 @@ vec2 Triangle::GetPosition()
 {
 	return ShapeTransform->getPosition();
 }
+
+float Triangle::GetDistanceMetric()
+{
+	float CSquared = (halfwidth * halfwidth) + (halfwidth * halfwidth);
+	float C = glm::sqrt(CSquared);
+	return C;
+}
+
 
 int Triangle::GetType()
 {

@@ -9,7 +9,7 @@ class TrianglePhysicsComp :
 	public PhysicsComp
 {
 public:
-	TrianglePhysicsComp(std::shared_ptr<Transform> ShapeTransform, glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, glm::vec2& acc);
+	TrianglePhysicsComp(std::shared_ptr<Transform> ShapeTransform, float& hw, glm::vec2& vel, glm::vec2& acc);
 	virtual ~TrianglePhysicsComp();
 
 	void Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
@@ -23,10 +23,10 @@ public:
 	glm::vec2 GetDirection() const;
 
 private:
-
-	glm::vec2 pointOne;
-	glm::vec2 pointTwo;
-	glm::vec2 pointThree;
+	float halfwidth;
+	glm::vec2 topPoint;
+	glm::vec2 leftPoint;
+	glm::vec2 rightPoint;
 
 	glm::vec2 velocity;
 	glm::vec2 acceleration;

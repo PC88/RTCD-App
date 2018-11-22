@@ -29,6 +29,7 @@ private:
 	std::unique_ptr<CirclePhysicsComp> physicsComp;
 	bool inUse = false;
 	float radius;
+	float halfwidth;
 
 	vec2 velocity;
 	vec2 acceleration;
@@ -52,5 +53,6 @@ public:
 
 	vec2 GetDirection();
 	vec2 GetPosition();
+	float GetDistanceMetric();
 };
 

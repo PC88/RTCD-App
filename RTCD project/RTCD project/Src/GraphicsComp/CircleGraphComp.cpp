@@ -65,8 +65,8 @@ void CircleGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, int wid
 	float angle;
 	for (int i = 0; i <= numSegments; i++)
 	{					// Last vertex same as first vertex
-		angle = i * 2.0f * pi<float>()/ numSegments;			// 360 deg for all segments // I could approximate this but I refuse to until this is explained ALL ERRORS THIS LINE-PC
-		glVertex2f(cos(angle) * (2.0f * radius / width)* aspectRatio,
+		angle = i * 2.0f * pi<float>()/ numSegments;			
+		glVertex2f(cos(angle) * (2.0f * radius / width)* aspectRatio, // prolly broken aspect ratio-PC
 			sin(angle) * (2.0f * radius / height));
 	}
 	glEnd();

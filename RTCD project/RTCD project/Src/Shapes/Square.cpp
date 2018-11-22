@@ -7,8 +7,8 @@
 
 
 
-Square::Square(vec2& vel, vec2& acc, float& w, float& h)
-	: acceleration(acc), velocity(vel), width(w), height(h) // delete graph and physic comps and change transform VIA TRANSLATE IN MOVE FROM LABS
+Square::Square(vec2& vel, vec2& acc, float& hw)
+	: acceleration(acc), velocity(vel), halfwidth(hw) // delete graph and physic comps and change transform VIA TRANSLATE IN MOVE FROM LABS
 {
 	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
 	float initY = std::rand() % (450 - 0 + 1) + 0;
@@ -18,8 +18,8 @@ Square::Square(vec2& vel, vec2& acc, float& w, float& h)
 	ShapeTransform = std::make_shared<Transform>();
 	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
 	ShapeTransform->Translate(position);// set Shape transform to position initially -PC - TODO copy this to the other shape classes -PC
-	graphicComp = std::make_unique<SquareGraphComp>(ShapeTransform, velocity, acceleration, width, height); // set up graphics and physics comps -PC
-	physicsComp = std::make_unique<SquarePhysicsComp>(ShapeTransform, velocity, acceleration, width, height);
+	graphicComp = std::make_unique<SquareGraphComp>(ShapeTransform, velocity, acceleration, halfwidth); // set up graphics and physics comps -PC
+	physicsComp = std::make_unique<SquarePhysicsComp>(ShapeTransform, velocity, acceleration, halfwidth);
 
 	inUse = false;
 }
@@ -59,6 +59,7 @@ bool Square::InUse()
 	}
 }
 
+
 int Square::GetType()
 {
 	switch (Creator)
@@ -80,6 +81,13 @@ int Square::GetType()
 		// gl code for color here
 		break;
 	}
+}
+
+float Square::GetDistanceMetric()
+{
+	float CSquared = (halfwidth * halfwidth) + (halfwidth * halfwidth);
+	float C = glm::sqrt(CSquared);
+	return C;
 }
 
 glm::vec2 Square::GetDirection()

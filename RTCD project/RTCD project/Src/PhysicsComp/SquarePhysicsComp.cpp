@@ -3,8 +3,12 @@
 
 
 
-SquarePhysicsComp::SquarePhysicsComp(std::shared_ptr<Transform> ShapeTransform, vec2& vel, vec2& acc, float& w, float& h)
-	: ShapeTransform(ShapeTransform), acceleration(acc), velocity(vel), m_width(w), m_height(h)
+SquarePhysicsComp::SquarePhysicsComp(std::shared_ptr<Transform> ShapeTransform, vec2& vel, vec2& acc, float& hw)
+	: ShapeTransform(ShapeTransform), acceleration(acc), velocity(vel), m_halfwidth(hw),
+	topLeft(ShapeTransform->getPosition().x - hw, ShapeTransform->getPosition().y - hw),
+	topRight(ShapeTransform->getPosition().x + hw, ShapeTransform->getPosition().y - hw),
+	bottomLeft(ShapeTransform->getPosition().x - hw, ShapeTransform->getPosition().y + hw), // defined for philosophy not actually implemented in a project of this scale -PC
+	bottomRight(ShapeTransform->getPosition().x + hw, ShapeTransform->getPosition().y + hw)
 {
 }
 
@@ -20,13 +24,14 @@ void SquarePhysicsComp::Update(std::chrono::milliseconds ElapsedDeltaTime, int w
 
 void SquarePhysicsComp::Move(glm::vec2 translation)
 {
-	ShapeTransform->Translate(translation); // TODO transform may not be the same as the squares -PC
+	ShapeTransform->Translate(translation); 
 }
 
 glm::vec2 operator*(const glm::vec2& v, const long long& m) // overloaded off for the accuracy of the move function/timestep -PC
 {
 	return glm::vec2(v.x * m, v.y * m);
 }
+
 void SquarePhysicsComp::TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	Move(velocity * ElapsedDeltaTime.count() + 0.5f * ElapsedDeltaTime.count() * ElapsedDeltaTime.count() * acceleration); // above overload used

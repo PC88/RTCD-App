@@ -5,8 +5,12 @@
 
 
 
-SquareGraphComp::SquareGraphComp(std::shared_ptr<Transform> ShapeTransform, glm::vec2& vel, glm::vec2& acc, float& w, float& h)
-	: ShapeTransform(ShapeTransform), velocity(vel), acceleration(acc), width(w), height(h)
+SquareGraphComp::SquareGraphComp(std::shared_ptr<Transform> ShapeTransform, glm::vec2& vel, glm::vec2& acc, float& hw)
+	: ShapeTransform(ShapeTransform), velocity(vel), acceleration(acc), halfwidth(hw),
+	topLeft(ShapeTransform->getPosition().x -hw,ShapeTransform->getPosition().y -hw),
+	topRight(ShapeTransform->getPosition().x + hw, ShapeTransform->getPosition().y - hw),
+	bottomLeft(ShapeTransform->getPosition().x - hw, ShapeTransform->getPosition().y + hw),
+	bottomRight(ShapeTransform->getPosition().x + hw, ShapeTransform->getPosition().y + hw)
 {
 	LastHtObject = GraphicsComp::Nothing;
 }
@@ -58,10 +62,10 @@ void SquareGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, int wid
 			SingletonGraphStates::instance().getSquareSquare().b);
 		break;
 	}
-	glVertex2f(2  * aspectRatio / width, 2  / height);
-	glVertex2f(-2  * aspectRatio / width, 2  / height);
-	glVertex2f(-2  * aspectRatio / width, -2 / height);
-	glVertex2f(2  * aspectRatio / width, -2  / height); // TODO work this out to be correct -PC
+	glVertex2f(topLeft.x,topLeft.y);
+	glVertex2f(topRight.x,topRight.y);
+	glVertex2f(bottomRight.x,bottomRight.y);
+	glVertex2f(bottomRight.x,bottomRight.y); // TODO work this out to be correct -PC
 	glEnd();
 }
 

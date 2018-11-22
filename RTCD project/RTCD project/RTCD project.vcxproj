@@ -91,7 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include;src/App/QuadTree</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EntryPointSymbol>
@@ -108,7 +108,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include;src/App/QuadTree</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EntryPointSymbol>
@@ -127,7 +127,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include;src/App/QuadTree</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -148,7 +148,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src/Shapes;src/PhysicsComp;src/GraphicsComp;src/Dependencies;src/App;$(SolutionDir)/src/Shapes;$(SolutionDir)Src\Dependencies\glut\include;src/App/QuadTree</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

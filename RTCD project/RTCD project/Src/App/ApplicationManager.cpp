@@ -1,6 +1,6 @@
 #include "ApplicationManager.h"
 #include "glm/glm.hpp"
-#include "glut/include/glut.h" // Glut include
+#include "glut/include/glut.h"
 #include <memory>
 #include "ObjectPool\ShapePool.h"
 #include <time.h>
@@ -9,6 +9,7 @@
 #include <vector>
 #include "SingletonGraphStates.h"
 #include "Transform.h"
+#include "QuadTree.h"
 #include "GameWindow.h"
 
 //void ApplicationManager::Initialise(std::shared_ptr<GameWindow> appWindow) // no fucking clue TODO fix this "is not compatible error" -PC
@@ -19,11 +20,12 @@
 
 
 std::shared_ptr<ApplicationManager> AppManager = std::make_shared<ApplicationManager>(); // JANK -PC will do until I get a better idea
-std::shared_ptr<GameWindow> gameWindow = std::make_shared<GameWindow>("RTCD First Build", 640, 450, 50, 50);
+std::shared_ptr<GameWindow> gameWindow = std::make_shared<GameWindow>("RTCD First Build", 1000, 1000, 50, 50);
 std::unique_ptr<ShapePool> Pool = std::make_unique<ShapePool>();
+std::unique_ptr<QuadTree> quadTree = std::make_unique<QuadTree>();
 std::chrono::milliseconds ElapsedDeltaTime;
-int width = 640;
-int height = 450; // this is also terrible practice but hey if im using a set of globals I might as well use these -PC
+int width = 1000; // set to 1k/1k so as to allow a nice distribution of QuadTree -PC
+int height = 1000; // this is also terrible practice but hey if im using a set of globals I might as well use these -PC
 
 ApplicationManager::ApplicationManager()
 {
@@ -44,6 +46,7 @@ void ApplicationManager::ReshapeWindow(int width, int height)
 {
 	m_window->Reshape(width, height);
 }
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////// global functions -PC ALL JANK QUITE POSSIBLY CHANGE THESE ///////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,14 +93,15 @@ void GLUTRenderer(std::chrono::milliseconds ElapsedDeltaTime)
 int main(int argc, char** argv) 
 {
 	// create pool -PC
+	int stopDepth = 4;
 	Pool->create(); // creates 4 arrays 1 dynamic 3 standard which are loaded in to the dynamic for abstract iteration -PC
-
 	SingletonGraphStates::instance().initialise(); // init singleton
+	quadTree->BuildQuadtree(glm::vec2(height/2,width/2),width/2, 4); // init QT, -PC
 
-	glutInit(&argc, argv); // INIT GLUT 
+	glutInit(&argc, argv); // Init GLUT  
 	auto LastTime = std::chrono::steady_clock::now(); // better timer than LABs -PC
 	 
-	while (true)
+	while (true) // this can be removed -PC
 	{
 		auto CurrentTime = std::chrono::steady_clock::now();
 		ElapsedDeltaTime = std::chrono::duration_cast<std::chrono::milliseconds>(CurrentTime - LastTime);

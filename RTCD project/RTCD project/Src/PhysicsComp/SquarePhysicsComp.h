@@ -9,7 +9,7 @@ class SquarePhysicsComp :
 	protected PhysicsComp
 {
 public:
-	SquarePhysicsComp(std::shared_ptr<Transform> ShapeTransform, vec2& vel, vec2& acc, float& w, float& h);
+	SquarePhysicsComp(std::shared_ptr<Transform> ShapeTransform, vec2& vel, vec2& acc, float& hw);
 
 	virtual ~SquarePhysicsComp();
 
@@ -20,15 +20,18 @@ public:
 	void TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 
 	glm::vec2 GetPosition() const; // position and direction are here just for debugging, 
-	                                  // they should have the same value as shape transform -PC
+	                               // they should have the same value as shape transform -PC
 	glm::vec2 GetDirection() const;
 
 private:
 
+	float m_halfwidth;
 	std::shared_ptr<Transform> ShapeTransform;
-	vec2 velocity;
-	vec2 acceleration;
-	float m_width;
-	float m_height;
+	glm::vec2 velocity;
+	glm::vec2 acceleration;
+	glm::vec2 topLeft;
+	glm::vec2 topRight;
+	glm::vec2 bottomLeft;
+	glm::vec2 bottomRight;
 };
 

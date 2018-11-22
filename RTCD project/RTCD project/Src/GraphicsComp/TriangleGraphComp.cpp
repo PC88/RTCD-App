@@ -2,8 +2,12 @@
 #include "SingletonGraphStates.h"
 #include "Transform.h"
 
-TriangleGraphComp::TriangleGraphComp(std::shared_ptr<Transform> ShapeTransform, glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, glm::vec2& acc)
-	:ShapeTransform(ShapeTransform), pointOne(p1), pointTwo(p2), pointThree(p3), velocity(vel), acceleration(acc)
+TriangleGraphComp::TriangleGraphComp(std::shared_ptr<Transform> ShapeTransform, float& halfwidth, glm::vec2& vel, glm::vec2& acc)
+	:ShapeTransform(ShapeTransform), 
+	topPoint(ShapeTransform->getPosition().x,ShapeTransform->getPosition().y - halfwidth),
+	leftPoint(ShapeTransform->getPosition().x - halfwidth, ShapeTransform->getPosition().y + halfwidth), 
+	rightPoint(ShapeTransform->getPosition().x + halfwidth, ShapeTransform->getPosition().y - halfwidth), 
+	velocity(vel), acceleration(acc)
 {
 	LastHtObject = GraphicsComp::Nothing; // init to default color -PC
 }
@@ -55,9 +59,9 @@ void TriangleGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, int w
 			SingletonGraphStates::instance().getTriangleSquare().b);
 		break;
 	}
-	glVertex2f(pointOne.x,pointTwo.y);
-	glVertex2f(pointTwo.x,pointTwo.y);
-	glVertex2f(pointThree.x,pointThree.y); // TODO work this out to be correct -PC
+	glVertex2f(topPoint.x,topPoint.y);
+	glVertex2f(leftPoint.x,leftPoint.y);
+	glVertex2f(rightPoint.x,rightPoint.y); 
 	glEnd();
 }
 

@@ -8,7 +8,7 @@ class TriangleGraphComp :
 	public GraphicsComp
 {
 public:
-	TriangleGraphComp(std::shared_ptr<Transform> ShapeTransform, glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, glm::vec2& acc);
+	TriangleGraphComp(std::shared_ptr<Transform> ShapeTransform, float& hw, glm::vec2& vel, glm::vec2& acc);
 	virtual ~TriangleGraphComp();
 
 	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) ;
@@ -17,9 +17,9 @@ public:
 
 private:
 
-	glm::vec2 pointOne;
-	glm::vec2 pointTwo;
-	glm::vec2 pointThree;
+	glm::vec2 topPoint;
+	glm::vec2 leftPoint;
+	glm::vec2 rightPoint;
 
 	glm::vec2 velocity;
 	glm::vec2 acceleration;

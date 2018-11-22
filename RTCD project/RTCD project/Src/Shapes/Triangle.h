@@ -23,10 +23,10 @@ class Triangle : public Shape
 private:
 
 	bool inUse;
-
-	vec2 pointOne;
-	vec2 pointTwo;
-	vec2 pointThree;
+	float halfwidth;
+	glm::vec2 topPoint;
+	glm::vec2 leftPoint;
+	glm::vec2 rightPoint;
 	vec2 position;
 
 	vec2 velocity;
@@ -39,13 +39,14 @@ private:
 public:
 
 	virtual ~Triangle();
-	Triangle(vec2& p1, vec2& p2, vec2& p3, vec2& vel, vec2& acc);
+	Triangle(float& hw, vec2& vel, vec2& acc);
 
 	void Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 	void OnCollide(int type);
 	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 	vec2 GetDirection();
 	vec2 GetPosition();
+	float GetDistanceMetric();
 	int GetType();
 	bool InUse();
 };

@@ -32,7 +32,7 @@ void ShapePool::Display(std::chrono::milliseconds ElapsedDeltaTime, int width, i
 	}
 }
 
-//void ShapePool::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
+//void ShapePool::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) // redundant I believe -PC
 //{
 //	for (std::vector<Shape*>::iterator it = shapes.begin; it < shapes.end; it++)
 //	{
@@ -52,11 +52,10 @@ void ShapePool::Load() //its either this way or 500+ lines of manual code it see
 {
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
-		float width = 3.0f;
-		float height = 3.0f;
+		float hw = 3.0f;
 		glm::vec2 vel;
 		glm::vec2 acc;
-		shapes.emplace_back(new Square(acc, vel, width, height));
+		shapes.emplace_back(new Square(acc, vel, hw));
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
@@ -67,11 +66,9 @@ void ShapePool::Load() //its either this way or 500+ lines of manual code it see
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
-		glm::vec2 vec1;
-		glm::vec2 vec2;
-		glm::vec2 vec3;
+		float hw;
 		glm::vec2 vel;
 		glm::vec2 acc;
-		shapes.emplace_back(new Triangle(vec1, vec2, vec3, vel, acc));
+		shapes.emplace_back(new Triangle(hw, vel, acc));
 	}
 }
