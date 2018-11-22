@@ -14,11 +14,8 @@ public:
 
 	/// collision reaction code, graphic element ///
 
-	virtual void OnCollideSquare() = 0; // NOTE does call default constructor? - PC
+	virtual void OnCollideGraphics(int type) = 0;
 
-	virtual void OnCollideCircle() = 0;
-
-	virtual void OnCollideTriangle() = 0;
 
 protected:
 

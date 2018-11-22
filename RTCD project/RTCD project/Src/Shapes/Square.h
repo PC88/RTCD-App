@@ -32,12 +32,14 @@ public:
 
 	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 
-	bool InUse() override;
+	void OnCollide(int type);
+
+	bool InUse();
 
 	int GetType();
 
 	glm::vec2 GetDirection();
 
-	glm::vec2 GetPoistion();
+	glm::vec2 GetPosition();
 };
 

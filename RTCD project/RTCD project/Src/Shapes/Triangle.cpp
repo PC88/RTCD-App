@@ -19,35 +19,36 @@ Triangle::Triangle(glm::vec2& p1, glm::vec2& p2, glm::vec2& p3, glm::vec2& vel, 
 	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
 	float initY = std::rand() % (450 - 0 + 1) + 0;
 
-	Creator = TypeOfCreatedObject::Triangle; // define meta data -PC
+	Creator = TypeOfCreatedObject::triangle; // define meta data -PC
 
 	ShapeTransform = std::make_shared<Transform>();
 	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
 	ShapeTransform->Translate(position);
-	graphicComp = std::make_unique<TriangleGraphComp>(ShapeTransform, pointOne, pointTwo, pointThree);
-	physicsComp = std::make_unique<TrianglePhysicsComp>(ShapeTransform, pointOne, pointTwo, pointThree);
+	graphicComp = std::make_unique<TriangleGraphComp>(ShapeTransform, pointOne, pointTwo, pointThree, velocity, acceleration);
+	physicsComp = std::make_unique<TrianglePhysicsComp>(ShapeTransform, pointOne, pointTwo, pointThree, velocity, acceleration);
 	inUse = false;
 }
 
 Triangle::~Triangle()
 {
 }
+
 void Triangle::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	physicsComp->Update(ElapsedDeltaTime, width, height);
 }
 
+void Triangle::OnCollide(int type)
+{
+	graphicComp->OnCollideGraphics(type); // inform comp for reaction -PC
+	glm::vec2 currentPosition = ShapeTransform->getPosition();
+	glm::vec2 negativePosition(currentPosition.x, currentPosition.y); // change transform as of reaction -PC
+	ShapeTransform->Translate(negativePosition);
+}
+
 void Triangle::Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
-
 	graphicComp->Render(ElapsedDeltaTime, width, height);
-
-	/*glBegin(GL_POLYGON);
-	glVertex2f(x, y);
-	glVertex2f(x + 200, y);
-	glVertex2f(x + 200 * 0.5, y + 200);
-	glEnd();*/ // I added in the drawing code and commented it out but i dont know if i done it right
-
 }
 
 vec2 Triangle::GetDirection()
@@ -65,17 +66,17 @@ int Triangle::GetType()
 	switch (Creator) // why is this undefined -PC
 	{
 		int typenum;
-	case TypeOfCreatedObject::Circle:
+	case TypeOfCreatedObject::circle:
 		typenum = 0;
 		return typenum;
 		// gl code for color here
 		break;
-	case TypeOfCreatedObject::Triangle:
+	case TypeOfCreatedObject::triangle:
 		typenum = 1;
 		return typenum;
 		// gl code for color here
 		break;
-	case TypeOfCreatedObject::Square:
+	case TypeOfCreatedObject::square:
 		typenum = 2;
 		return typenum;
 		// gl code for color here

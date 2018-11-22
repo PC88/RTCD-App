@@ -61,14 +61,18 @@ void TriangleGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, int w
 	glEnd();
 }
 
-void TriangleGraphComp::OnCollideSquare()
+void TriangleGraphComp::OnCollideGraphics(int type)
 {
-}
-
-void TriangleGraphComp::OnCollideCircle()
-{
-}
-
-void TriangleGraphComp::OnCollideTriangle()
-{
+	if (type == 0)
+	{
+		LastHtObject = GraphicsComp::Circle;
+	}
+	if(type == 1)
+	{
+		LastHtObject = GraphicsComp::Triangle;
+	}
+	if (type == 2)
+	{
+		LastHtObject = GraphicsComp::Triangle;
+	}
 }

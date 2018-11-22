@@ -73,16 +73,19 @@ void CircleGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, int wid
 	
 }
 
-void CircleGraphComp::OnCollideSquare()
+void CircleGraphComp::OnCollideGraphics(int type)
 {
-}
-
-void CircleGraphComp::OnCollideCircle()
-{
-
-}
-
-void CircleGraphComp::OnCollideTriangle()
-{
+	if (type == 0) //r
+	{
+		LastHtObject = GraphicsComp::Circle;
+	}
+	if (type == 1) //g
+	{
+		LastHtObject = GraphicsComp::Triangle;
+	}
+	if (type == 2) //b
+	{
+		LastHtObject = GraphicsComp::Triangle;
+	}
 }
 

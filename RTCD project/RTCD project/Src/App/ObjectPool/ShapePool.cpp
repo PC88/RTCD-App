@@ -2,9 +2,6 @@
 #include "Shape.h"
 #include "Transform.h"
 #include <iterator>
-#include "Square.h"
-#include "Circle.h"
-#include "Triangle.h"
 #include "glut/include/glut.h" 
 
 
@@ -24,27 +21,30 @@ ShapePool::~ShapePool()
 
 void ShapePool::create()
 {
-	this->Load(); // calls once fills all 3 sub arrays -PC
-	// This method should add all 3 arrays contents to the vector container shapes.
-	// I do hope this is doing it correctly and not just over writing its self each time I do this. -PC
-	shapes.insert(shapes.end(), std::begin(squaresInPool), std::end(squaresInPool)); // C++ 11 way of loading arrays to vector -PC
-	shapes.insert(shapes.end(), std::begin(circlesInPool), std::end(circlesInPool));
-	shapes.insert(shapes.end(), std::begin(trianglesInPool), std::end(trianglesInPool));
+	this->Load(); // fills vector with all respective shapes -PC
 }
 
 void ShapePool::Display(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
 	for (std::vector<Shape*[POOL_SIZE]>::iterator it = shapes.begin(); it < shapes.end(); it++)
 	{
-		(**it)->Render(ElapsedDeltaTime, width, height); // just call render which CALLS render on the respective graphic comps via call back -PC
+		(**it)->Render(ElapsedDeltaTime, width, height); // just call render which CALLS render on the respective graphic comps via call back, 3 times dereferenced -PC
 	}
 }
 
+//void ShapePool::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
+//{
+//	for (std::vector<Shape*>::iterator it = shapes.begin; it < shapes.end; it++)
+//	{
+//		(*it)->Update(ElapsedDeltaTime, width, height); // just call update which CALLS update on the respective physics comps via call back -PC
+//	}
+//}
+
 void ShapePool::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
-	for (std::vector<Shape*>::iterator it = shapes.begin; it < shapes.end; it++)
+	for (std::vector<Shape*[POOL_SIZE]>::iterator it = shapes.begin(); it < shapes.end(); it++)
 	{
-		(*it)->Update(ElapsedDeltaTime, width, height); // just call update which CALLS update on the respective physics comps via call back -PC
+		(**it)->Update(ElapsedDeltaTime, width, height); // just call update which CALLS update on the respective physics comps via call back -PC
 	}
 }
 
@@ -56,7 +56,6 @@ void ShapePool::Load() //its either this way or 500+ lines of manual code it see
 		float height = 3.0f;
 		glm::vec2 vel;
 		glm::vec2 acc;
-		//squaresInPool[i] = new Square(acc, vel, width, height);
 		shapes.emplace_back(new Square(acc, vel, width, height));
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
@@ -64,7 +63,7 @@ void ShapePool::Load() //its either this way or 500+ lines of manual code it see
 		float radius = 3.0f;
 		glm::vec2 vel;
 		glm::vec2 acc;
-		circlesInPool[i] = new Circle(radius,vel,acc); // change constructor to take position and respective shite
+		shapes.emplace_back(new Circle(radius, vel, acc));
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
@@ -73,6 +72,6 @@ void ShapePool::Load() //its either this way or 500+ lines of manual code it see
 		glm::vec2 vec3;
 		glm::vec2 vel;
 		glm::vec2 acc;
-		trianglesInPool[i] = new Triangle(vec1, vec2, vec3, vel, acc); // change constructor to take position and respective shite
+		shapes.emplace_back(new Triangle(vec1, vec2, vec3, vel, acc));
 	}
 }

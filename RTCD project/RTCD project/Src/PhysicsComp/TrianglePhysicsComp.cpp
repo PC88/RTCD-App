@@ -22,10 +22,15 @@ void TrianglePhysicsComp::Move(glm::vec2 translation)
 	ShapeTransform->Translate(translation);
 }
 
+glm::vec2 operator*(const glm::vec2& v, const long long& m) // overloaded off for the accuracy of the move function/timestep -PC
+{
+	return glm::vec2(v.x * m, v.y * m);
+}
+
 void TrianglePhysicsComp::TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
-	Move(ElapsedDeltaTime * velocity + 0.5f * ElapsedDeltaTime * ElapsedDeltaTime * acceleration);
-	vec2 velInBetween = velocity + 0.5f * ElapsedDeltaTime * acceleration; // cast/the types here, std::milli has no converttype ASK -PC
+	Move(velocity * ElapsedDeltaTime.count()  + 0.5f * ElapsedDeltaTime.count() * ElapsedDeltaTime.count() * acceleration);
+	vec2 velInBetween = velocity + 0.5f * ElapsedDeltaTime.count() * acceleration;
 	velocity = velInBetween + 0.5f * acceleration; // add in boundary checks here TODO -PC
 }
 
@@ -34,7 +39,7 @@ glm::vec2 TrianglePhysicsComp::GetPosition() const
 	return ShapeTransform->getPosition();
 }
 
-glm::vec2 TrianglePhysicsComp::GetDirection()
+glm::vec2 TrianglePhysicsComp::GetDirection() const
 {
 	return ShapeTransform->getUpDir();
 }

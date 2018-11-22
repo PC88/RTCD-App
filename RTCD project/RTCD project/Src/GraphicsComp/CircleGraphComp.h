@@ -9,11 +9,7 @@ public:
 
 	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 
-	void OnCollideSquare();
-
-	void OnCollideCircle();
-
-	void OnCollideTriangle();
+	void OnCollideGraphics(int type);
 
 private:
 

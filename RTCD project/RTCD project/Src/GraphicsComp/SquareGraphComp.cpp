@@ -66,17 +66,18 @@ void SquareGraphComp::Render(std::chrono::milliseconds ElapsedDeltaTime, int wid
 }
 
 
-void SquareGraphComp::OnCollideSquare()
+void SquareGraphComp::OnCollideGraphics(int type)
 {
-	// event system link to change chosen graphic component - PC
-}
-
-void SquareGraphComp::OnCollideCircle()
-{
-	// event system link to change chosen graphic component - PC
-}
-
-void SquareGraphComp::OnCollideTriangle()
-{
-	// event system link to change chosen graphic component - PC
+	if (type == 0)
+	{
+		LastHtObject = GraphicsComp::Circle;
+	}
+	if (type == 1)
+	{
+		LastHtObject = GraphicsComp::Triangle;
+	}
+	if (type == 2)
+	{
+		LastHtObject = GraphicsComp::Triangle;
+	}
 }

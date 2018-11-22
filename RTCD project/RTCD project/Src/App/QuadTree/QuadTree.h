@@ -1,6 +1,7 @@
 #pragma once
 // First attempt at QuadTree - PC
 #include "glm/vec2.hpp"
+#include "Shape.h"
 
 struct Node// AABB for Quad Tree
 {
@@ -16,12 +17,12 @@ public:
 
 private:
 	float halfWidth;
-	vec2 centre;
+	glm::vec2 centre;
 	Node* pChild[4];
-	//GameObject* pObjList, should this be the literal pool of objects passed as param? -PC
+	
 };
 
-class QuadTree
+class QuadTree 
 {
 
 private:
@@ -38,7 +39,7 @@ public:
 
 	Node*  BuildQuadtree(glm::vec2 centre, float halfWidth, int stopDepth); // stopDepth is how tall the tree can grow in our case - PC
 
-	void Insert();
+	void Insert(Node* pTree, Shape* pShape);
 
 	void SubDevide();
 

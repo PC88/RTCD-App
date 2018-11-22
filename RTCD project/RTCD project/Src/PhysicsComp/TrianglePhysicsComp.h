@@ -20,7 +20,7 @@ public:
 
 	glm::vec2 GetPosition() const; // position and direction are here just for debugging, 
 									  // they should have the same value as shape transform -PC
-	glm::vec2 GetDirection();
+	glm::vec2 GetDirection() const;
 
 private:
 

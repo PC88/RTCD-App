@@ -12,11 +12,7 @@ public:
 
 	 void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) ;
 
-	 virtual void OnCollideSquare() override; 
-
-	 virtual void OnCollideCircle() override;
-
-	 virtual void OnCollideTriangle() override;
+	 void OnCollideGraphics(int type);
 
 private:
 

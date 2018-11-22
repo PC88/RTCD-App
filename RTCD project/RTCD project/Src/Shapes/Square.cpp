@@ -13,7 +13,7 @@ Square::Square(vec2& vel, vec2& acc, float& w, float& h)
 	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
 	float initY = std::rand() % (450 - 0 + 1) + 0;
 
-	Creator = TypeOfCreatedObject::Square; // define meta data -PC
+	Creator = TypeOfCreatedObject::square; // define meta data -PC
 
 	ShapeTransform = std::make_shared<Transform>();
 	position = vec2(initX, initY); // init to random -PC // this actually has to be set in the transform -PC
@@ -39,6 +39,13 @@ void Square::Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int h
 	graphicComp->Render(ElapsedDeltaTime, width, height);
 }
 
+void Square::OnCollide(int type)
+{
+	graphicComp->OnCollideGraphics(type); // inform comp for reaction -PC
+	glm::vec2 currentPosition = ShapeTransform->getPosition();
+	glm::vec2 negativePosition(currentPosition.x, currentPosition.y); // change transform as of reaction -PC
+	ShapeTransform->Translate(negativePosition);
+}
 
 bool Square::InUse()
 {
@@ -57,17 +64,17 @@ int Square::GetType()
 	switch (Creator)
 	{
 		int typenum;
-	case TypeOfCreatedObject::Circle:
+	case TypeOfCreatedObject::circle:
 		typenum = 0;
 		return typenum;
 		// gl code for color here
 		break;
-	case TypeOfCreatedObject::Triangle:
+	case TypeOfCreatedObject::triangle:
 		typenum = 1;
 		return typenum;
 		// gl code for color here
 		break;
-	case TypeOfCreatedObject::Square:
+	case TypeOfCreatedObject::square:
 		typenum = 2;
 		return typenum;
 		// gl code for color here
@@ -80,7 +87,7 @@ glm::vec2 Square::GetDirection()
 	return ShapeTransform->getLeftDir();// not correct I believe - PC
 }
 
-glm::vec2 Square::GetPoistion()
+glm::vec2 Square::GetPosition()
 {
 	return ShapeTransform->getPosition();
 }

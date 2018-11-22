@@ -44,11 +44,13 @@ public:
 
 	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 
+	void OnCollide(int type);
+
 	bool InUse();
 
 	int GetType();
 
 	vec2 GetDirection();
-	vec2 GetPoistion();
+	vec2 GetPosition();
 };
 

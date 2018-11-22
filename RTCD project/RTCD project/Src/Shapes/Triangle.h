@@ -42,6 +42,7 @@ public:
 	Triangle(vec2& p1, vec2& p2, vec2& p3, vec2& vel, vec2& acc);
 
 	void Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
+	void OnCollide(int type);
 	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 	vec2 GetDirection();
 	vec2 GetPosition();
