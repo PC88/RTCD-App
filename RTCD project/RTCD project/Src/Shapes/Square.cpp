@@ -10,8 +10,8 @@
 Square::Square(vec2& vel, vec2& acc, float& hw)
 	: acceleration(acc), velocity(vel), halfwidth(hw) // delete graph and physic comps and change transform VIA TRANSLATE IN MOVE FROM LABS
 {
-	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
-	float initY = std::rand() % (450 - 0 + 1) + 0;
+	float initX = std::rand() % (1000 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
+	float initY = std::rand() % (1000 - 0 + 1) + 0;
 
 	Creator = TypeOfCreatedObject::square; // define meta data -PC
 

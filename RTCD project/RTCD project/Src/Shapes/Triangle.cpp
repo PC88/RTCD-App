@@ -19,8 +19,8 @@ Triangle::Triangle(float& hw, glm::vec2& vel, glm::vec2& acc)
 	leftPoint(ShapeTransform->getPosition().x - halfwidth, ShapeTransform->getPosition().y + halfwidth), // this is defined because of philosophy of the project, it does quite literally do nothing -PC
 	rightPoint(ShapeTransform->getPosition().x + halfwidth, ShapeTransform->getPosition().y - halfwidth)
 {
-	float initX = std::rand() % (640 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
-	float initY = std::rand() % (450 - 0 + 1) + 0;
+	float initX = std::rand() % (1000 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
+	float initY = std::rand() % (1000 - 0 + 1) + 0;
 
 	Creator = TypeOfCreatedObject::triangle; // define meta data -PC
 
