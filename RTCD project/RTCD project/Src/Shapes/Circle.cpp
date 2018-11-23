@@ -105,17 +105,17 @@ int Circle::GetType()
 	}
 }
 
-vec2 Circle::GetDirection()
+vec2 Circle::GetDirection() const
 {
 	return ShapeTransform->getLeftDir();
 }
 
-vec2 Circle::GetPosition()
+vec2 Circle::GetPosition() const
 {
 	return ShapeTransform->getPosition();
 }
 
-float Circle::GetDistanceMetric()
+float Circle::GetDistanceMetric() const
 {
 	return halfwidth;
 }

@@ -37,10 +37,10 @@ public:
 
 	int GetType();
 
-	float GetDistanceMetric();
+	float GetDistanceMetric() const;
 
-	glm::vec2 GetDirection();
+	glm::vec2 GetDirection() const;
 
-	glm::vec2 GetPosition();
+	glm::vec2 GetPosition() const;
 };
 

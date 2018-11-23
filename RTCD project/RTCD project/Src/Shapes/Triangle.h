@@ -44,9 +44,9 @@ public:
 	void Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
 	void OnCollide(int type);
 	void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
-	vec2 GetDirection();
-	vec2 GetPosition();
-	float GetDistanceMetric();
+	vec2 GetDirection() const;
+	vec2 GetPosition() const;
+	float GetDistanceMetric() const;
 	int GetType();
 	bool InUse();
 };

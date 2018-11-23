@@ -51,8 +51,8 @@ public:
 
 	int GetType();
 
-	vec2 GetDirection();
-	vec2 GetPosition();
-	float GetDistanceMetric();
+	vec2 GetDirection() const;
+	vec2 GetPosition() const;
+	float GetDistanceMetric() const;
 };
 

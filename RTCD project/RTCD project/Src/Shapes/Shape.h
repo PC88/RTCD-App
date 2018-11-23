@@ -19,13 +19,13 @@ public:
 
 	virtual void Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) = 0;
 
-	virtual glm::vec2 GetDirection() = 0;
+	virtual glm::vec2 GetDirection() const = 0;
 
-	virtual float GetDistanceMetric() = 0;
+	virtual float GetDistanceMetric() const = 0;
 
 	virtual void OnCollide(int type) = 0;
 
-	virtual glm::vec2 GetPosition() = 0; // returns position, but this will also be the centre by definition - see constructor -PC
+	virtual glm::vec2 GetPosition() const = 0; // returns position, but this will also be the centre by definition - see constructor -PC
 
 	virtual int GetType() = 0; // this will be reflect the value of the Enum thus giving us the type without casting. -PC
 private:

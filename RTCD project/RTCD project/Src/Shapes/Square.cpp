@@ -83,19 +83,19 @@ int Square::GetType()
 	}
 }
 
-float Square::GetDistanceMetric()
+float Square::GetDistanceMetric() const
 {
 	float CSquared = (halfwidth * halfwidth) + (halfwidth * halfwidth);
 	float C = glm::sqrt(CSquared);
 	return C;
 }
 
-glm::vec2 Square::GetDirection()
+glm::vec2 Square::GetDirection() const
 {
 	return ShapeTransform->getLeftDir();// not correct I believe - PC
 }
 
-glm::vec2 Square::GetPosition()
+glm::vec2 Square::GetPosition() const
 {
 	return ShapeTransform->getPosition();
 }

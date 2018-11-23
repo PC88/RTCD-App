@@ -54,17 +54,17 @@ void Triangle::Render(std::chrono::milliseconds ElapsedDeltaTime, int width, int
 	graphicComp->Render(ElapsedDeltaTime, width, height);
 }
 
-vec2 Triangle::GetDirection()
+vec2 Triangle::GetDirection() const
 {
 	return ShapeTransform->getUpDir();
 }
 
-vec2 Triangle::GetPosition()
+vec2 Triangle::GetPosition() const
 {
 	return ShapeTransform->getPosition();
 }
 
-float Triangle::GetDistanceMetric()
+float Triangle::GetDistanceMetric() const
 {
 	float CSquared = (halfwidth * halfwidth) + (halfwidth * halfwidth);
 	float C = glm::sqrt(CSquared);
