@@ -5,9 +5,7 @@ class GameWindow
 public:
 	virtual ~GameWindow();
 
-	GameWindow(char* title, int width, int height, int posX, int posY)
-	{		
-	}
+	GameWindow(char* title, int width, int height, int posX, int posY);
 
 	void Reshape(int width, int height);
 	int getWidth();

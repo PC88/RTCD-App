@@ -13,9 +13,9 @@ ShapePool::ShapePool()
 
 ShapePool::~ShapePool() 
 {
-	for (std::vector<Shape*[POOL_SIZE]>::iterator I = shapes.begin(); I < shapes.end(); I++) // handles deletion of shape pool
+	for (int i = 0; i < POOL_SIZE; i++) // I think this does the job -PC
 	{
-		delete(*I);
+		delete(shapes[i]);
 	}
 }
 
@@ -26,25 +26,17 @@ void ShapePool::create()
 
 void ShapePool::Display(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
-	for (std::vector<Shape*[POOL_SIZE]>::iterator it = shapes.begin(); it < shapes.end(); it++)
+	for (int i = 0; i < POOL_SIZE; i++)
 	{
-		(**it)->Render(ElapsedDeltaTime, width, height); // just call render which CALLS render on the respective graphic comps via call back, 3 times dereferenced -PC
+		shapes[i]->Update(ElapsedDeltaTime, width, height);
 	}
 }
 
-//void ShapePool::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) // redundant I believe -PC
-//{
-//	for (std::vector<Shape*>::iterator it = shapes.begin; it < shapes.end; it++)
-//	{
-//		(*it)->Update(ElapsedDeltaTime, width, height); // just call update which CALLS update on the respective physics comps via call back -PC
-//	}
-//}
-
 void ShapePool::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
-	for (std::vector<Shape*[POOL_SIZE]>::iterator it = shapes.begin(); it < shapes.end(); it++)
+	for (int i = 0; i < POOL_SIZE; i++)
 	{
-		(**it)->Update(ElapsedDeltaTime, width, height); // just call update which CALLS update on the respective physics comps via call back -PC
+		shapes[i]->Update(ElapsedDeltaTime, width, height);
 	}
 }
 
@@ -55,20 +47,20 @@ void ShapePool::Load() //its either this way or 500+ lines of manual code it see
 		float hw = 3.0f;
 		glm::vec2 vel;
 		glm::vec2 acc;
-		shapes.emplace_back(new Square(acc, vel, hw));
+		shapes[i] = new Square(vel, acc, hw);
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
 		float radius = 3.0f;
 		glm::vec2 vel;
 		glm::vec2 acc;
-		shapes.emplace_back(new Circle(radius, vel, acc));
+		shapes[i] = new Circle(radius, vel, acc);
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
 		float hw;
 		glm::vec2 vel;
 		glm::vec2 acc;
-		shapes.emplace_back(new Triangle(hw, vel, acc));
+		shapes[i] = new Triangle(hw, vel, acc);
 	}
 }

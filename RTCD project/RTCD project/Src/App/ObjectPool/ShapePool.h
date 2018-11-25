@@ -28,6 +28,6 @@ private:
 
 	static const int POOL_SIZE = 120; 
 
-	std::vector<Shape*[POOL_SIZE]> shapes;
+	Shape* shapes[POOL_SIZE];
 };
 

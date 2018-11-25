@@ -15,7 +15,7 @@ public:
 	{
 	};
 	// can be public because its a struct?
-	float halfWidth;
+	float m_halfWidth;
 	glm::vec2 centre;
 	Node* pChild[4];
 	
@@ -41,6 +41,8 @@ public:
 	void Insert(Node* pTree, Shape* pShape);
 
 	void SubDevide();
+
+	void TestAllcollisions(Node* pTree)
 
 };
 
