@@ -33,9 +33,31 @@ glm::vec2 operator*(const glm::vec2& v, const long long& m) // overloaded off fo
 
 void TrianglePhysicsComp::TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
-	Move(velocity * ElapsedDeltaTime.count()  + 0.5f * ElapsedDeltaTime.count() * ElapsedDeltaTime.count() * acceleration);
+	Move(velocity * ElapsedDeltaTime.count() + 0.5f * ElapsedDeltaTime.count() * ElapsedDeltaTime.count() * acceleration);
 	vec2 velInBetween = velocity + 0.5f * ElapsedDeltaTime.count() * acceleration;
-	velocity = velInBetween + 0.5f * acceleration; // add in boundary checks here TODO -PC
+	velocity = velInBetween + 0.5f * acceleration; 
+
+	//Boundary checks -PC - these are 99% gonna be inaccurate 
+	if(ShapeTransform->getPosition().x + this->halfwidth >= width) // left bound -PC
+	{
+		glm::vec2 currentPos = (ShapeTransform->getPosition().x * -1,ShapeTransform->getPosition().y);
+		ShapeTransform->Translate(currentPos);
+	}
+	if (ShapeTransform->getPosition().x - this->halfwidth <= width) // right bound -PC
+	{
+		glm::vec2 currentPos = (ShapeTransform->getPosition().x * -1, ShapeTransform->getPosition().y);
+		ShapeTransform->Translate(currentPos);
+	}
+	if (ShapeTransform->getPosition().y - this->halfwidth <= height) // top bound -PC - assuming flipped axis
+	{
+		glm::vec2 currentPos = (ShapeTransform->getPosition().y * -1, ShapeTransform->getPosition().y);
+		ShapeTransform->Translate(currentPos);
+	}
+	if (ShapeTransform->getPosition().y >= height) // bottom bound -PC
+	{
+		glm::vec2 currentPos = (ShapeTransform->getPosition().y * -1, ShapeTransform->getPosition().y);
+		ShapeTransform->Translate(currentPos);
+	}
 }
 
 glm::vec2 TrianglePhysicsComp::GetPosition() const

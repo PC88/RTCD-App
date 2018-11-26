@@ -64,3 +64,8 @@ void ShapePool::Load() //its either this way or 500+ lines of manual code it see
 		shapes[i] = new Triangle(hw, vel, acc);
 	}
 }
+
+int ShapePool::GetSize() const
+{
+	return POOL_SIZE;
+}

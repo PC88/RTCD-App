@@ -173,7 +173,7 @@
     <ClCompile Include="Src\PhysicsComp\SquarePhysicsComp.cpp" />
     <ClCompile Include="Src\PhysicsComp\PhysicsComp.cpp" />
     <ClCompile Include="Src\GraphicsComp\GraphicsComp.cpp" />
-    <ClCompile Include="Src\App\ApplicationManager.cpp" />
+    <ClCompile Include="Src\App\Main.cpp" />
     <ClCompile Include="Src\Dependencies\glm\detail\glm.cpp" />
     <ClCompile Include="Src\Shapes\Shape.cpp" />
     <ClCompile Include="Src\App\ObjectPool\ShapePool.cpp" />
@@ -196,7 +196,6 @@
     <ClInclude Include="Src\PhysicsComp\SquarePhysicsComp.h" />
     <ClInclude Include="Src\PhysicsComp\PhysicsComp.h" />
     <ClInclude Include="Src\GraphicsComp\GraphicsComp.h" />
-    <ClInclude Include="Src\App\ApplicationManager.h" />
     <ClInclude Include="Src\Dependencies\glm\common.hpp" />
     <ClInclude Include="Src\Dependencies\glm\detail\compute_common.hpp" />
     <ClInclude Include="Src\Dependencies\glm\detail\compute_vector_relational.hpp" />

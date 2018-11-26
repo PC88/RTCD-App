@@ -24,6 +24,8 @@ public:
 
 	void Load();
 
+	int GetSize() const;
+
 private:
 
 	static const int POOL_SIZE = 120; 

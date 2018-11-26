@@ -11,6 +11,9 @@ public:
 	Shape();
 	virtual ~Shape();
 
+
+	Shape* pNextObject; // Pointer to next object in linked list // C.Erickson RTCD has to be public for QT -PC
+
 	// Transform need to go in here - PC 
 
 	virtual void Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) = 0;

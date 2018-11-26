@@ -7,17 +7,15 @@ struct Node// AABB for Quad Tree
 {
 
 public:
-	Node(float halfWidth)
-	{
-	};
+	Node();
 
-	virtual ~Node()
-	{
-	};
+	virtual ~Node();
+
 	// can be public because its a struct?
 	float m_halfWidth;
 	glm::vec2 centre;
 	Node* pChild[4];
+	Shape* pObjList;
 	
 };
 
@@ -27,13 +25,11 @@ class QuadTree
 private:
 
 	int Capacity;
-	Node Boundary;
+	Node m_Boundary;
 	int stopDepth;
 
 public:
-	QuadTree(const Node& Boundary, int pool)
-	{
-	};
+	QuadTree(const Node& Boundary, int pool);
 	~QuadTree();
 
 	Node*  BuildQuadtree(glm::vec2 centre, float halfWidth, int stopDepth); // stopDepth is how tall the tree can grow in our case - PC
@@ -42,7 +38,7 @@ public:
 
 	void SubDevide();
 
-	void TestAllcollisions(Node* pTree)
+	void TestAllcollisions(Node* pTree);
 
 };
 
