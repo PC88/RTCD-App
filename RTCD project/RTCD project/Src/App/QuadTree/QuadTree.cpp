@@ -61,24 +61,21 @@ void QuadTree::Insert(Node* pTree, Shape* pShape)
 	}
 	if (!straddle) // if the object is inside the cell
 	{
-		if (pTree->pChild[index] == nullptr) // if child does not exist
+		if (pTree->pChild[index] == nullptr) // if child does not exist, create it.
 		{
-			pTree->pChild[index] = new Node(); //GO/OVER take as params? 
+			pTree->pChild[index] = new Node(); 
 			pTree->pChild[index]->centre = centre;
 			pTree->pChild[index]->m_halfWidth = halfWidth;
 		}
-		Insert(pTree->pChild[index], pShape);
+		Insert(pTree->pChild[index], pShape); // continue inserting 
 	}
 	else // subdivide -PC
 	{
-		pShape->pNextObject = pTree->pObjList; // does this not need to ref next element in the pool -PC
-		pTree->pObjList = pShape->pNextObject;
+		pShape->pNextObject = pTree->pObjList; // this links the object here into the linked list, making the shapes object pointer = that nodes specific objectptr
+		pTree->pObjList = pShape->pNextObject; // then makes the Tree`s objectptr = the shapes next object
 	}
 }
 
-void QuadTree::SubDevide()
-{
-}
 
 void QuadTree::TestAllcollisions(Node* pTree)
 {

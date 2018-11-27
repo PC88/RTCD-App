@@ -20,7 +20,7 @@ char* ptrTitle = title; // this is quite strange in comparison to the LAB code w
 GameWindow* window = new GameWindow(title, width, height, 100, 100);
 
 std::unique_ptr<ShapePool> Pool = std::make_unique<ShapePool>();
-Node root;
+Node* root;
 std::unique_ptr<QuadTree> quadTree = std::make_unique<QuadTree>(root, 120);
 std::chrono::milliseconds UpdateElapsedDeltaTime;
 std::chrono::milliseconds DisplayElapsedDeltaTime;
@@ -45,8 +45,8 @@ void display()
 	auto LastTime = std::chrono::steady_clock::now(); // these have to be duplicated due to limitations of GLUT -PC
 	auto CurrentTime = std::chrono::steady_clock::now();
 	DisplayElapsedDeltaTime = std::chrono::duration_cast<std::chrono::milliseconds>(CurrentTime - LastTime);
-	LastTime = CurrentTime;
 	Pool->Display(DisplayElapsedDeltaTime, width, height);
+	LastTime = CurrentTime;
 }
 
 void update(int value) // value not used here as I am using the global "Display/Update ElapsedDeltaTime" to go over GLUTS API in the timer and display callbacks -PC
@@ -54,8 +54,8 @@ void update(int value) // value not used here as I am using the global "Display/
 	auto LastTime = std::chrono::steady_clock::now(); // these have to be duplicated due to limitations of GLUT -PC
 	auto CurrentTime = std::chrono::steady_clock::now();
 	UpdateElapsedDeltaTime = std::chrono::duration_cast<std::chrono::milliseconds>(CurrentTime - LastTime);
-	LastTime = CurrentTime;
 	Pool->Update(UpdateElapsedDeltaTime, width, height);
+	LastTime = CurrentTime;
 }
 
 void GLUTRenderer()
@@ -70,7 +70,7 @@ void GLUTRenderer()
 int main(int argc, char** argv)
 {
 
-	int stopDepth = 4;
+	int stopDepth = 4; // this means MAX_DEPTH = 256 -PC
 	glutInit(&argc, argv); 
 
 	Pool->create(); 
@@ -80,7 +80,7 @@ int main(int argc, char** argv)
 		quadTree->Insert(root, *Pool[i]); // how do I get a pointer to the root node, to make this generic -PC
 	}
 
-	SingletonGraphStates::instance().initialise(); // init singleton
+	SingletonGraphStates::instance().initialise(); // init singleton -PC
 	
 	GLUTRenderer(); // This in a similar form - although not the same as LAB`s hence the Param. -PC
 	return 0;

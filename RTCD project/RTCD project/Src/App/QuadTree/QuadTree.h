@@ -36,8 +36,6 @@ public:
 
 	void Insert(Node* pTree, Shape* pShape);
 
-	void SubDevide();
-
 	void TestAllcollisions(Node* pTree);
 
 };

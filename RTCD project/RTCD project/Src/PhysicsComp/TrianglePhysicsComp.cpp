@@ -40,22 +40,22 @@ void TrianglePhysicsComp::TCVelocityVerletSolver(std::chrono::milliseconds Elaps
 	//Boundary checks -PC - these are 99% gonna be inaccurate 
 	if(ShapeTransform->getPosition().x + this->halfwidth >= width) // left bound -PC
 	{
-		glm::vec2 currentPos = (ShapeTransform->getPosition().x * -1,ShapeTransform->getPosition().y);
+		glm::vec2 currentPos = (-ShapeTransform->getPosition().x ,ShapeTransform->getPosition().y);
 		ShapeTransform->Translate(currentPos);
 	}
 	if (ShapeTransform->getPosition().x - this->halfwidth <= width) // right bound -PC
 	{
-		glm::vec2 currentPos = (ShapeTransform->getPosition().x * -1, ShapeTransform->getPosition().y);
+		glm::vec2 currentPos = (-ShapeTransform->getPosition().x , ShapeTransform->getPosition().y);
 		ShapeTransform->Translate(currentPos);
 	}
 	if (ShapeTransform->getPosition().y - this->halfwidth <= height) // top bound -PC - assuming flipped axis
 	{
-		glm::vec2 currentPos = (ShapeTransform->getPosition().y * -1, ShapeTransform->getPosition().y);
+		glm::vec2 currentPos = (ShapeTransform->getPosition().x, -1.0f * (ShapeTransform->getPosition().y));
 		ShapeTransform->Translate(currentPos);
 	}
 	if (ShapeTransform->getPosition().y >= height) // bottom bound -PC
 	{
-		glm::vec2 currentPos = (ShapeTransform->getPosition().y * -1, ShapeTransform->getPosition().y);
+		glm::vec2 currentPos = (ShapeTransform->getPosition().x, -1.0f * (ShapeTransform->getPosition().y));
 		ShapeTransform->Translate(currentPos);
 	}
 }

@@ -3,6 +3,7 @@
 #include "Transform.h"
 #include <iterator>
 #include "glut/include/glut.h" 
+#include "QuadTree.h"
 
 
 
@@ -40,28 +41,45 @@ void ShapePool::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, in
 	}
 }
 
-void ShapePool::Load() //its either this way or 500+ lines of manual code it seems -PC
+void ShapePool::Load() 
 {
+	Shape* lastObject;
+	Shape* startObject = shapes[0]->pNextObject;
+	shapes[0]->pNextObject = startObject; // initialise linked list start -PC
+	lastObject = shapes[0];
+
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
-		float hw = 3.0f;
-		glm::vec2 vel;
-		glm::vec2 acc;
-		shapes[i] = new Square(vel, acc, hw);
+		if (!shapes[i]->InUse()) // makes sure the entire array does in fact get filled - just a re-useage of the object pool pattern -PC
+		{
+			float hw = 3.0f;
+			glm::vec2 vel;
+			glm::vec2 acc;
+			shapes[i] = new Square(vel, acc, hw);
+			lastObject = shapes[i]->pNextObject; // link the list -PC
+		}
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
-		float radius = 3.0f;
-		glm::vec2 vel;
-		glm::vec2 acc;
-		shapes[i] = new Circle(radius, vel, acc);
+		if (!shapes[i]->InUse())
+		{
+			float radius = 3.0f;
+			glm::vec2 vel;
+			glm::vec2 acc;
+			shapes[i] = new Circle(radius, vel, acc);
+			lastObject = shapes[i]->pNextObject;
+		}
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
-		float hw;
-		glm::vec2 vel;
-		glm::vec2 acc;
-		shapes[i] = new Triangle(hw, vel, acc);
+		if (!shapes[i]->InUse())
+		{
+			float hw = 3.0f;
+			glm::vec2 vel;
+			glm::vec2 acc;
+			shapes[i] = new Triangle(hw, vel, acc);
+			lastObject = shapes[i]->pNextObject;
+		}
 	}
 }
 

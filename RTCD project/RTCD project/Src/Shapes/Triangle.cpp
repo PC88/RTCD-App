@@ -16,7 +16,7 @@
 Triangle::Triangle(float& hw, glm::vec2& vel, glm::vec2& acc)
 	: halfwidth(hw), velocity(vel), acceleration(acc),
 	topPoint(ShapeTransform->getPosition().x, ShapeTransform->getPosition().y - halfwidth),
-	leftPoint(ShapeTransform->getPosition().x - halfwidth, ShapeTransform->getPosition().y + halfwidth), // this is defined because of philosophy of the project, it does quite literally do nothing -PC
+	leftPoint(ShapeTransform->getPosition().x - halfwidth, ShapeTransform->getPosition().y + halfwidth), // this is defined because of philosophy of the project, it does ,quite literally, do nothing -PC
 	rightPoint(ShapeTransform->getPosition().x + halfwidth, ShapeTransform->getPosition().y - halfwidth)
 {
 	float initX = std::rand() % (1000 - 0 + 1) + 0; // make initial position between screen limits does hard code at the moment -PC
@@ -29,7 +29,7 @@ Triangle::Triangle(float& hw, glm::vec2& vel, glm::vec2& acc)
 	ShapeTransform->Translate(position);
 	graphicComp = std::make_unique<TriangleGraphComp>(ShapeTransform, halfwidth, velocity, acceleration);
 	physicsComp = std::make_unique<TrianglePhysicsComp>(ShapeTransform, halfwidth, velocity, acceleration);
-	inUse = false;
+	inUse = true;
 }
 
 Triangle::~Triangle()

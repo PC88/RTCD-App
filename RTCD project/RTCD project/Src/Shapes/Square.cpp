@@ -21,7 +21,7 @@ Square::Square(vec2& vel, vec2& acc, float& hw)
 	graphicComp = std::make_unique<SquareGraphComp>(ShapeTransform, velocity, acceleration, halfwidth); // set up graphics and physics comps -PC
 	physicsComp = std::make_unique<SquarePhysicsComp>(ShapeTransform, velocity, acceleration, halfwidth);
 
-	inUse = false;
+	inUse = true;
 }
 
 
