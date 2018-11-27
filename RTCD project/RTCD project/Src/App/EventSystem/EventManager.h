@@ -12,7 +12,7 @@ public:
 	void ClosestPtPointAABB(glm::vec2 const & P, const Shape& b, glm::vec2& q);
 	bool AABBAABBCollision(const Shape& A, const Shape& B);
 
-	void CheckCollisions();
+	void CheckCollisions(Shape* shape1, Shape* shape2);
 
 	EventManager(std::vector<Shape*>&); // this is gonna get wild -PC
 	virtual ~EventManager();

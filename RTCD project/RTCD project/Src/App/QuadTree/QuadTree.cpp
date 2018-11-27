@@ -77,7 +77,7 @@ void QuadTree::Insert(Node* pTree, Shape* pShape)
 }
 
 
-void QuadTree::TestAllcollisions(Node* pTree)
+void QuadTree::TestAllcollisions(Node* pTree, EventManager* eventManager)
 {
 	// keep track of all ancestor objects in a stack
 	const int MAX_DEPTH = 256;
@@ -95,9 +95,13 @@ void QuadTree::TestAllcollisions(Node* pTree)
 		{
 			for (pB = pTree->pObjList; pB; pB = pB->pNextObject)
 			{
-				if (pA == pB)
+				if (pA == pB)// if this object is the SAME object dont test
 				{
-					//test collisions via event manager here -PC
+					break;
+				}
+				else// else do tests
+				{
+					eventManager->CheckCollisions(pA->GetType(),pB->GetType()); 
 				}
 			}
 		}

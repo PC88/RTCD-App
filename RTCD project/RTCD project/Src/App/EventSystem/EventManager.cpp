@@ -17,8 +17,17 @@ bool EventManager::AABBAABBCollision(const Shape& A, const Shape& B) // for now 
 	return true;
 }
 
-void EventManager::CheckCollisions()
+void EventManager::CheckCollisions(Shape* shape1, Shape* shape2)
 {
+	if (shape1->GetType() == 0)// circle -PC
+	{
+	}
+	else if (shape1->GetType() == 1)// triangle -PC
+	{
+	}
+	else if (shape1->GetType() == 2)// square -PC
+	{
+	}
 }
 
 bool EventManager::CircleAABBCollision(const Shape& c1, const Shape& b)

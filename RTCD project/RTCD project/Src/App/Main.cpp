@@ -55,6 +55,7 @@ void update(int value) // value not used here as I am using the global "Display/
 	auto CurrentTime = std::chrono::steady_clock::now();
 	UpdateElapsedDeltaTime = std::chrono::duration_cast<std::chrono::milliseconds>(CurrentTime - LastTime);
 	Pool->Update(UpdateElapsedDeltaTime, width, height);
+	quadTree->TestAllcollisions(root); // text collisions within spacial data structure -PC
 	LastTime = CurrentTime;
 }
 

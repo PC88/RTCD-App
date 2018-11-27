@@ -2,6 +2,7 @@
 // First attempt at QuadTree - PC
 #include "glm/vec2.hpp"
 #include "Shape.h"
+#include "EventSystem/EventManager.h"
 
 struct Node// AABB for Quad Tree
 {
@@ -36,7 +37,7 @@ public:
 
 	void Insert(Node* pTree, Shape* pShape);
 
-	void TestAllcollisions(Node* pTree);
+	void TestAllcollisions(Node* pTree, EventManager* eventManager);
 
 };
 
