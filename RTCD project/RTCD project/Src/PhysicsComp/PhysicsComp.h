@@ -19,5 +19,9 @@ public:
 	                                     // the same value as shape transform -PC
 	virtual glm::vec2 GetDirection() const = 0;
 
+	virtual glm::vec2 ReverseY() = 0;
+
+	virtual glm::vec2 ReverseX() = 0;
+
 };
 

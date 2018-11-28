@@ -43,11 +43,6 @@ void ShapePool::Update(std::chrono::milliseconds ElapsedDeltaTime, int width, in
 
 void ShapePool::Load() 
 {
-	Shape* lastObject;
-	Shape* startObject = shapes[0]->pNextObject;
-	shapes[0]->pNextObject = startObject; // initialise linked list start -PC
-	lastObject = shapes[0];
-
 	for (int i = 0; i < POOL_SIZE / 3; i++)
 	{
 		if (!shapes[i]->InUse()) // makes sure the entire array does in fact get filled - just a re-useage of the object pool pattern -PC
@@ -56,7 +51,6 @@ void ShapePool::Load()
 			glm::vec2 vel;
 			glm::vec2 acc;
 			shapes[i] = new Square(vel, acc, hw);
-			lastObject = shapes[i]->pNextObject; // link the list -PC
 		}
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
@@ -67,7 +61,6 @@ void ShapePool::Load()
 			glm::vec2 vel;
 			glm::vec2 acc;
 			shapes[i] = new Circle(radius, vel, acc);
-			lastObject = shapes[i]->pNextObject;
 		}
 	}
 	for (int i = 0; i < POOL_SIZE / 3; i++)
@@ -78,7 +71,6 @@ void ShapePool::Load()
 			glm::vec2 vel;
 			glm::vec2 acc;
 			shapes[i] = new Triangle(hw, vel, acc);
-			lastObject = shapes[i]->pNextObject;
 		}
 	}
 }

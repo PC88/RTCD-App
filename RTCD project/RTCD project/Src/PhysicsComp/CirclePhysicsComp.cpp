@@ -28,9 +28,35 @@ glm::vec2 operator*(const glm::vec2& v, const long long& m) // overloaded off fo
 
 void CirclePhysicsComp::TCVelocityVerletSolver(std::chrono::milliseconds ElapsedDeltaTime, int width, int height)
 {
-	Move(velocity * ElapsedDeltaTime.count() + 0.5f * ElapsedDeltaTime.count() * ElapsedDeltaTime.count() * acceleration); // can fix by overloading operators
-	vec2 velInBetween = velocity + 0.5f * ElapsedDeltaTime.count() * acceleration; 
-	velocity = velInBetween + 0.5f * acceleration; // add in boundary checks here TODO -PC
+	Move(velocity * ElapsedDeltaTime.count() + 0.5f * ElapsedDeltaTime.count() * ElapsedDeltaTime.count() * acceleration); 
+	vec2 velInBetween = velocity + 0.5f * ElapsedDeltaTime.count() * acceleration;
+	velocity = velInBetween + 0.5f * acceleration;
+	//Boundary checks -PC - these are accurate given our ref systems -PC
+
+	if (ShapeTransform->getPosition().x + this->radius >= width) // left bound -PC
+	{
+		glm::vec2 reversedPos;
+		reversedPos = ReverseX();
+		ShapeTransform->Translate(reversedPos);
+	}
+	if (ShapeTransform->getPosition().x - this->radius <= width) // right bound -PC
+	{
+		glm::vec2 reversedPos;
+		reversedPos = ReverseX();
+		ShapeTransform->Translate(reversedPos);
+	}
+	if (ShapeTransform->getPosition().y - this->radius <= height) // top bound -PC - assuming flipped axis
+	{
+		glm::vec2 reversedPos;
+		reversedPos = ReverseY();
+		ShapeTransform->Translate(reversedPos);
+	}
+	if (ShapeTransform->getPosition().y + this->radius >= height) // bottom bound -PC
+	{
+		glm::vec2 reversedPos;
+		reversedPos = ReverseY();
+		ShapeTransform->Translate(reversedPos);
+	}
 }
 
 glm::vec2 CirclePhysicsComp::GetPosition() const
@@ -41,5 +67,33 @@ glm::vec2 CirclePhysicsComp::GetPosition() const
 glm::vec2 CirclePhysicsComp::GetDirection() const
 {
 	return ShapeTransform->getUpDir();
+}
+
+glm::vec2 CirclePhysicsComp::ReverseX()
+{
+	float x;
+	float y;
+	glm::vec2 reversedXVec;
+
+	x = ShapeTransform->getPosition().x;
+	y = ShapeTransform->getPosition().y;
+	x = x * -1;
+
+	reversedXVec = glm::vec2(x, y);
+	return reversedXVec;
+}
+
+glm::vec2 CirclePhysicsComp::ReverseY()
+{
+	float x;
+	float y;
+	glm::vec2 reversedYVec;
+
+	x = ShapeTransform->getPosition().x;
+	y = ShapeTransform->getPosition().y;
+	y = y * -1;
+
+	reversedYVec = glm::vec2(x, y);
+	return reversedYVec;
 }
 

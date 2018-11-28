@@ -11,6 +11,7 @@ public:
 	bool CircleAABBCollision(const Shape& c1, const Shape& b);
 	void ClosestPtPointAABB(glm::vec2 const & P, const Shape& b, glm::vec2& q);
 	bool AABBAABBCollision(const Shape& A, const Shape& B);
+	bool CircleCircleCollision(Shape* S1, Shape* S2);
 
 	void CheckCollisions(Shape* shape1, Shape* shape2);
 

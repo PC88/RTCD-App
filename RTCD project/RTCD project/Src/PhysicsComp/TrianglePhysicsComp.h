@@ -22,6 +22,10 @@ public:
 									  // they should have the same value as shape transform -PC
 	glm::vec2 GetDirection() const;
 
+	glm::vec2 ReverseX();
+
+	glm::vec2 ReverseY();
+	
 private:
 	float halfwidth;
 	glm::vec2 topPoint;

@@ -90,7 +90,7 @@ void QuadTree::TestAllcollisions(Node* pTree, EventManager* eventManager)
 	ancestorStack[depth++] = pTree;
 	for (int n = 0; n < depth; n++)
 	{
-		Shape *pA, *pB; // Should these be objects of the pool, since they contain the relevant linkedlists/ how does this list element actually link one by one i.e linking the actual linked list -PC
+		Shape *pA, *pB; 
 		for (pA = ancestorStack[n]->pObjList; pA; pA =  pA->pNextObject)
 		{
 			for (pB = pTree->pObjList; pB; pB = pB->pNextObject)
@@ -99,9 +99,9 @@ void QuadTree::TestAllcollisions(Node* pTree, EventManager* eventManager)
 				{
 					break;
 				}
-				else// else do tests
+				else// else hand off to event manager for tests -PC
 				{
-					eventManager->CheckCollisions(pA->GetType(),pB->GetType()); 
+					eventManager->CheckCollisions(pA,pB); 
 				}
 			}
 		}
@@ -110,7 +110,7 @@ void QuadTree::TestAllcollisions(Node* pTree, EventManager* eventManager)
 	{
 		if (pTree->pChild[i])
 		{
-			TestAllcollisions(pTree->pChild[i]);
+			TestAllcollisions(pTree->pChild[i], eventManager); // recursion -PC
 		}
 	}
 	depth--;
