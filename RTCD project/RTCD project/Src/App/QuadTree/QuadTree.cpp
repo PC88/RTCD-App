@@ -9,8 +9,8 @@ Node::~Node()
 {
 };
 
-QuadTree::QuadTree(const Node& Boundary, int poolsize)
-	:m_Boundary(Boundary), Capacity(poolsize)
+QuadTree::QuadTree(Node* Boundary, int poolsize)
+	:m_Boundary(*Boundary), Capacity(poolsize)
 {
 }
 
@@ -61,15 +61,15 @@ void QuadTree::Insert(Node* pTree, Shape* pShape)
 	}
 	if (!straddle) // if the object is inside the cell
 	{
-		if (pTree->pChild[index] == nullptr) // if child does not exist, create it.
-		{
-			pTree->pChild[index] = new Node(); 
-			pTree->pChild[index]->centre = centre;
-			pTree->pChild[index]->m_halfWidth = halfWidth;
-		}
+		//if (pTree->pChild[index] == nullptr) // if child does not exist, create it.
+		//{
+		//	pTree->pChild[index] = new Node(); 
+		//	pTree->pChild[index]->centre = centre;
+		//	pTree->pChild[index]->m_halfWidth = halfWidth;
+		//}
 		Insert(pTree->pChild[index], pShape); // continue inserting 
 	}
-	else // subdivide -PC
+	else //insert here -PC
 	{
 		pShape->pNextObject = pTree->pObjList; // this links the object here into the linked list, making the shapes object pointer = that nodes specific objectptr
 		pTree->pObjList = pShape->pNextObject; // then makes the Tree`s objectptr = the shapes next object

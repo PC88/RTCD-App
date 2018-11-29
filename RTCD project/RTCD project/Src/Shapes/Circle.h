@@ -51,6 +51,8 @@ public:
 
 	int GetType();
 
+	float GetHalfwidth();
+
 	vec2 GetDirection() const;
 	vec2 GetPosition() const;
 	float GetDistanceMetric() const;

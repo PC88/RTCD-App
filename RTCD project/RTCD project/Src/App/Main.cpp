@@ -18,7 +18,7 @@ int height = 1000; // this is also terrible practice but hey if im using a set o
 char title[] = "RTCD";
 char* ptrTitle = title; // this is quite strange in comparison to the LAB code which seemingly converts implicitly -PC
 GameWindow* window = new GameWindow(title, width, height, 100, 100);
-
+EventManager* eventManager;
 std::unique_ptr<ShapePool> Pool = std::make_unique<ShapePool>();
 Node* root;
 std::unique_ptr<QuadTree> quadTree = std::make_unique<QuadTree>(root, 120);
@@ -55,7 +55,7 @@ void update(int value) // value not used here as I am using the global "Display/
 	auto CurrentTime = std::chrono::steady_clock::now();
 	UpdateElapsedDeltaTime = std::chrono::duration_cast<std::chrono::milliseconds>(CurrentTime - LastTime);
 	Pool->Update(UpdateElapsedDeltaTime, width, height);
-	quadTree->TestAllcollisions(root); // text collisions within spacial data structure -PC
+	quadTree->TestAllcollisions(root, eventManager); // text collisions within spacial data structure -PC
 	LastTime = CurrentTime;
 }
 
@@ -78,7 +78,7 @@ int main(int argc, char** argv)
 	quadTree->BuildQuadtree(glm::vec2(height / 2, width / 2), width / 2, stopDepth); // init QT, -PC
 	for (int i = 0; 1 < Pool->GetSize(); i++)
 	{
-		quadTree->Insert(root, *Pool[i]); // how do I get a pointer to the root node, to make this generic -PC
+		quadTree->Insert(root, Pool->shapes[i]); // how do I get a pointer to the root node, to make this generic -PC
 	}
 
 	SingletonGraphStates::instance().initialise(); // init singleton -PC

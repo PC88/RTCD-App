@@ -14,7 +14,6 @@ public:
 
 	Shape* pNextObject; // Pointer to next object in linked list // C.Erickson RTCD has to be public for QT -PC
 
-	// Transform need to go in here - PC 
 
 	virtual void Update(std::chrono::milliseconds ElapsedDeltaTime, int width, int height) = 0;
 
@@ -28,6 +27,8 @@ public:
 
 	virtual void OnCollide(int type) = 0;
 
+	virtual float GetHalfwidth() = 0;
+
 	virtual glm::vec2 GetPosition() const = 0; // returns position, but this will also be the centre by definition - see constructor -PC
 
 	virtual int GetType() = 0; // this will be reflect the value of the Enum thus giving us the type without casting. -PC
@@ -39,7 +40,7 @@ private:
 
 protected:
 
-	std::shared_ptr<Transform> ShapeTransform; // all shapes will have this TODO better way to do this than accessor function accessing an accessor function -PC
+	std::shared_ptr<Transform> ShapeTransform; 
 
 	
 	TypeOfCreatedObject Creator;

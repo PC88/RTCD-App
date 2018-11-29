@@ -98,8 +98,9 @@
       </EntryPointSymbol>
       <SubSystem>
       </SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)RTCD Project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)RTCD project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
       <AdditionalDependencies>glut32.lib</AdditionalDependencies>
+      <TargetMachine>NotSet</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -115,8 +116,9 @@
       </EntryPointSymbol>
       <SubSystem>
       </SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)RTCD Project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)RTCD project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
       <AdditionalDependencies>glut32.lib</AdditionalDependencies>
+      <TargetMachine>NotSet</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -136,8 +138,9 @@
       </EntryPointSymbol>
       <SubSystem>
       </SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)RTCD Project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)RTCD project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
       <AdditionalDependencies>glut32.lib</AdditionalDependencies>
+      <TargetMachine>NotSet</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -157,8 +160,9 @@
       </EntryPointSymbol>
       <SubSystem>
       </SubSystem>
-      <AdditionalLibraryDirectories>$(SolutionDir)RTCD Project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)RTCD project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
       <AdditionalDependencies>glut32.lib</AdditionalDependencies>
+      <TargetMachine>NotSet</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

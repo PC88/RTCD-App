@@ -49,4 +49,8 @@ public:
 	float GetDistanceMetric() const;
 	int GetType();
 	bool InUse();
+	float GetHalfwidth();
+	glm::vec2 GetTopPoint();
+	glm::vec2 GetLeftPoint();
+	glm::vec2 GetRightPoint();
 };

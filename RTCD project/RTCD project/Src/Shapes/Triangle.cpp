@@ -114,3 +114,23 @@ bool Triangle::InUse()
 
 	}
 }
+
+float Triangle::GetHalfwidth()
+{
+	return halfwidth;
+}
+
+glm::vec2 Triangle::GetTopPoint()
+{
+	return topPoint;
+}
+
+glm::vec2 Triangle::GetLeftPoint()
+{
+	return leftPoint;
+}
+
+glm::vec2 Triangle::GetRightPoint()
+{
+	return rightPoint;
+}

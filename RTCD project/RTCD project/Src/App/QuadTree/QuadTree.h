@@ -30,7 +30,7 @@ private:
 	int stopDepth;
 
 public:
-	QuadTree(const Node& Boundary, int pool);
+	QuadTree(Node* Boundary, int pool);
 	~QuadTree();
 
 	Node*  BuildQuadtree(glm::vec2 centre, float halfWidth, int stopDepth); // stopDepth is how tall the tree can grow in our case - PC

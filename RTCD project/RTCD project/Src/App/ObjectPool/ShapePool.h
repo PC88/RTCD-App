@@ -16,6 +16,8 @@ public:
 	ShapePool();
 	virtual ~ShapePool();
 
+	static const int POOL_SIZE = 120;
+
 	void create();
 
 	void Display(std::chrono::milliseconds ElapsedDeltaTime, int width, int height);
@@ -26,10 +28,9 @@ public:
 
 	int GetSize() const;
 
+	Shape* shapes[POOL_SIZE];
 private:
 
-	static const int POOL_SIZE = 120; 
 
-	Shape* shapes[POOL_SIZE];
 };
 

@@ -1,9 +1,5 @@
 #pragma once
 #include "PhysicsComp.h"
-#include <memory>
-#include <chrono>
-#include "glm\vec2.hpp"
-#include "Transform.h"
 
 class TrianglePhysicsComp :
 	public PhysicsComp

@@ -1,7 +1,8 @@
 #pragma once
 #include <chrono>
 #include "glm/glm.hpp"
-class Transform;
+#include "Transform.h"
+#include <memory>
 
 class PhysicsComp
 {

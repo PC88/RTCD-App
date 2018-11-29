@@ -21,7 +21,7 @@ void CirclePhysicsComp::Move(glm::vec2 translation)
 	ShapeTransform->Translate(translation);
 }
 
-glm::vec2 operator*(const glm::vec2& v, const long long& m) // overloaded off for the accuracy of the move function/timestep
+inline glm::vec2 operator*(const glm::vec2& v, const long long& m) // needs to be inline or multiple definitions in translation unit -PC
 {
 	return glm::vec2(v.x * m, v.y * m);
 }

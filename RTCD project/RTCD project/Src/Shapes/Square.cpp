@@ -90,6 +90,11 @@ float Square::GetDistanceMetric() const
 	return C;
 }
 
+float Square::GetHalfwidth()
+{
+	return halfwidth;
+}
+
 glm::vec2 Square::GetDirection() const
 {
 	return ShapeTransform->getLeftDir();// not correct I believe - PC

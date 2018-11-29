@@ -1,8 +1,5 @@
 #pragma once
 #include "PhysicsComp.h"
-#include <memory>
-#include "Transform.h"
-#include "glm\vec2.hpp"
 
 class CirclePhysicsComp :
 	public PhysicsComp
@@ -30,5 +27,7 @@ private:
 	float radius;
 	glm::vec2 velocity;
 	glm::vec2 acceleration;
+
+
 };
 

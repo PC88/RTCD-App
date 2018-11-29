@@ -1,5 +1,6 @@
 #include "EventManager.h"
 #include "Shape.h"
+#include "Triangle.h"
 
 EventManager::EventManager(std::vector<Shape*>&)
 {
@@ -40,21 +41,31 @@ bool EventManager::CircleCircleCollision(Shape* S1, Shape * S2)
 	return false;
 }
 
+bool EventManager::TriangleAABBCollision(glm::vec2 tP, glm::vec2 lP, glm::vec2 rP, Shape * S)
+{
+	return false; // TODO complete this -PC
+}
+
 bool EventManager::CircleTriangleCollision(Shape* C, Shape* T, glm::vec2& p) // section 5.2.7 RTCD, -PC
 {
-	p = ClosestPtPointTriangle(C, ); // TODO, fill this in via modifying shape interface -PC
-	// Circle and triangle intersect if the (squared) distance from circle
-	// centre to point p is less than the (squared) circle radius
-	glm::vec2 v = p - C->GetPosition();
-	if (glm::dot(v,v) <= C->GetDistanceMetric() * C->GetDistanceMetric())
+	Triangle* Tri = dynamic_cast<Triangle*>(T); // this will not fail as the type has been checked by Enum -PC
+	if (Tri != nullptr) // just in case but should be impossible due to enum governance -PC
 	{
-		return true;
-		C->OnCollide(T->GetType());
-		T->OnCollide(C->GetType());
-	}
-	else
-	{
-		return false;
+		
+		p = ClosestPtPointTriangle(C, Tri->GetTopPoint(),Tri->GetLeftPoint(), Tri->GetRightPoint()); 
+		// Circle and triangle intersect if the (squared) distance from circle
+		// centre to point p is less than the (squared) circle radius
+		glm::vec2 v = p - C->GetPosition();
+		if (glm::dot(v, v) <= C->GetDistanceMetric() * C->GetDistanceMetric())
+		{
+			return true;
+			C->OnCollide(T->GetType());
+			T->OnCollide(C->GetType());
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
 

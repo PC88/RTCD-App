@@ -1,9 +1,5 @@
 #pragma once
 #include "PhysicsComp.h"
-#include "glm/vec2.hpp"
-#include "Transform.h"
-#include <memory>
-#include "glut/include/glut.h" // ASK this is getting to be a big issue -PC
 
 class SquarePhysicsComp :
 	protected PhysicsComp

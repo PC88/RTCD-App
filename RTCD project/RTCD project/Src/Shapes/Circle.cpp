@@ -105,6 +105,11 @@ int Circle::GetType()
 	}
 }
 
+float Circle::GetHalfwidth()
+{
+	return halfwidth;
+}
+
 vec2 Circle::GetDirection() const
 {
 	return ShapeTransform->getLeftDir();

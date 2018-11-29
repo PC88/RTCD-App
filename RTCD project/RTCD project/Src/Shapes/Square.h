@@ -4,6 +4,8 @@
 #include "SquarePhysicsComp.h"
 #include <memory>
 
+class SquarePhysicsComp;
+
 class Square :
 	public Shape
 
@@ -38,6 +40,8 @@ public:
 	int GetType();
 
 	float GetDistanceMetric() const;
+
+	float GetHalfwidth();
 
 	glm::vec2 GetDirection() const;
 
