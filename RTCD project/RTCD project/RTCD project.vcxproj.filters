@@ -1241,9 +1241,11 @@
     <None Include="Src\Dependencies\glut\include\glut.def">
       <Filter>Source Files</Filter>
     </None>
+    <None Include="Src\Dependencies\glut\glut\glut.dll" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="Src\Dependencies\glut\glut\glut32.lib" />
+    <Library Include="Src\Dependencies\glut\glut\glut.lib" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Src\Dependencies\glut\glut\README-win32.txt" />

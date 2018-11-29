@@ -67,6 +67,10 @@ bool EventManager::CircleTriangleCollision(Shape* C, Shape* T, glm::vec2& p) // 
 			return false;
 		}
 	}
+	else
+	{
+		return false;
+	}
 }
 
 glm::vec2 EventManager::ClosestPtPointTriangle(Shape* C, glm::vec2 tP, glm::vec2 lP, glm::vec2 rP) // this was a rough one to write, RTCD section 5.1.5 -PC

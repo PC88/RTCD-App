@@ -99,7 +99,7 @@
       <SubSystem>
       </SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)RTCD project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glut32.lib</AdditionalDependencies>
+      <AdditionalDependencies>glut32.lib;glut.lib</AdditionalDependencies>
       <TargetMachine>NotSet</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
@@ -117,7 +117,7 @@
       <SubSystem>
       </SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)RTCD project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glut32.lib</AdditionalDependencies>
+      <AdditionalDependencies>glut32.lib;glut.lib</AdditionalDependencies>
       <TargetMachine>NotSet</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
@@ -139,7 +139,7 @@
       <SubSystem>
       </SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)RTCD project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glut32.lib</AdditionalDependencies>
+      <AdditionalDependencies>glut32.lib;glut.lib</AdditionalDependencies>
       <TargetMachine>NotSet</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
@@ -161,7 +161,7 @@
       <SubSystem>
       </SubSystem>
       <AdditionalLibraryDirectories>$(SolutionDir)RTCD project\Src\Dependencies\glut\glut</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glut32.lib</AdditionalDependencies>
+      <AdditionalDependencies>glut32.lib;glut.lib</AdditionalDependencies>
       <TargetMachine>NotSet</TargetMachine>
     </Link>
   </ItemDefinitionGroup>
@@ -576,10 +576,12 @@
     <None Include="Src\Dependencies\glm\gtx\vector_angle.inl" />
     <None Include="Src\Dependencies\glm\gtx\vector_query.inl" />
     <None Include="Src\Dependencies\glm\gtx\wrap.inl" />
+    <None Include="Src\Dependencies\glut\glut\glut.dll" />
     <None Include="Src\Dependencies\glut\glut\glut32.dll" />
     <None Include="Src\Dependencies\glut\include\glut.def" />
   </ItemGroup>
   <ItemGroup>
+    <Library Include="Src\Dependencies\glut\glut\glut.lib" />
     <Library Include="Src\Dependencies\glut\glut\glut32.lib" />
   </ItemGroup>
   <ItemGroup>
