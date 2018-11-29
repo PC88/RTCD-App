@@ -8,10 +8,13 @@ class EventManager
 {
 public:
 
-	bool CircleAABBCollision(const Shape& c1, const Shape& b);
+	bool CircleAABBCollision(Shape* C, Shape* S);
 	void ClosestPtPointAABB(glm::vec2 const & P, const Shape& b, glm::vec2& q);
-	bool AABBAABBCollision(const Shape& A, const Shape& B);
+	bool AABBAABBCollision(Shape* A, Shape* B);
 	bool CircleCircleCollision(Shape* S1, Shape* S2);
+
+	bool CircleTriangleCollision(Shape* C, Shape* T, glm::vec2& p);
+	glm::vec2 ClosestPtPointTriangle(Shape* C, glm::vec2 tP, glm::vec2 lP, glm::vec2 rP);
 
 	void CheckCollisions(Shape* shape1, Shape* shape2);
 

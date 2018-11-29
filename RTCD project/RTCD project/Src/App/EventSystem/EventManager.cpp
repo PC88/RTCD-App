@@ -10,11 +10,22 @@ EventManager::~EventManager()
 {
 }
 
-bool EventManager::AABBAABBCollision(const Shape& A, const Shape& B) 
+bool EventManager::AABBAABBCollision(Shape* A, Shape* B)
 {
-	if (abs(A.GetPosition().x - B.GetPosition().x) > (A.GetPosition().x + B.GetPosition().x)) return false;
-	if (abs(A.GetPosition().y - B.GetPosition().y) > (A.GetPosition().y + B.GetPosition().y)) return false;
-	return true;
+	if (abs(A->GetPosition().x - B->GetPosition().x) > (A->GetPosition().x + B->GetPosition().x))
+	{
+		return false;
+	}
+	if (abs(A->GetPosition().y - B->GetPosition().y) > (A->GetPosition().y + B->GetPosition().y))
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+		A->OnCollide(B->GetType());
+		B->OnCollide(A->GetType());
+	}
 }
 
 bool EventManager::CircleCircleCollision(Shape* S1, Shape * S2)
@@ -29,6 +40,87 @@ bool EventManager::CircleCircleCollision(Shape* S1, Shape * S2)
 	return false;
 }
 
+bool EventManager::CircleTriangleCollision(Shape* C, Shape* T, glm::vec2& p) // section 5.2.7 RTCD, -PC
+{
+	p = ClosestPtPointTriangle(C, ); // TODO, fill this in via modifying shape interface -PC
+	// Circle and triangle intersect if the (squared) distance from circle
+	// centre to point p is less than the (squared) circle radius
+	glm::vec2 v = p - C->GetPosition();
+	if (glm::dot(v,v) <= C->GetDistanceMetric() * C->GetDistanceMetric())
+	{
+		return true;
+		C->OnCollide(T->GetType());
+		T->OnCollide(C->GetType());
+	}
+	else
+	{
+		return false;
+	}
+}
+
+glm::vec2 EventManager::ClosestPtPointTriangle(Shape* C, glm::vec2 tP, glm::vec2 lP, glm::vec2 rP) // this was a rough one to write, RTCD section 5.1.5 -PC
+{
+	// Check if P in vertex region outside A
+	glm::vec2 tPlP = lP - tP;
+	glm::vec2 tPrP = rP - tP;
+	glm::vec2 tPcent = C->GetPosition() - tP;
+
+	float d1 = glm::dot(tPlP, tPcent);
+	float d2 = glm::dot(tPrP, tPcent);
+	if (d1 <= 0.0f && d2 <= 0.0f)
+	{
+		return tP; // barycentric coordinates (1,0,0)
+	}
+
+	// Check if P in vertex region outside B
+	glm::vec2 lPcent = C->GetPosition() - lP;
+	float d3 = glm::dot(tPlP, lPcent);
+	float d4 = glm::dot(tPrP, lPcent);
+	if (d3 >= 0.0f && d4 <= d3)
+	{
+		return lP; // barycentric coordinates (0,1,0)
+	}
+
+	// Check if P in edge region of AB, if so return projection of P onto AB
+	float vrP = d1 * d4 - d3 * d2;
+	if (vrP <= 0.0f && d1 >= 0.0f && d3 <= 0.0f)
+	{
+		float v = d1 / (d1 - d3);
+		return tP + v * tPlP;
+	}
+
+	// Check if P in vertex region outside C
+	glm::vec2 crP = C->GetPosition() - rP;
+	float d5 = glm::dot(tPlP, crP);
+	float d6 = glm::dot(tPrP, crP);
+	if (d6 >= 0.0f && d5 <= d6)
+	{
+		return rP; // barycentric coordinates (0,0,1)
+	}
+
+	// Check if P in edge region of AC, if so return projection of P onto AC
+	float vlP = d5 * d2 - d1 * d6;
+	if (vlP <= 0.0f && d2 >= 0.0f && d6 <= 0.0f)
+	{
+		float w = d2 / (d2 - d6);
+		return tP + w * tPrP; // barycentric coordinates (1-w,0,w)
+	}
+
+	// Check if P in edge region of BC, if so return projection of P onto BC
+	float vtP = d3 * d6 - d5 * d4;
+	if (vtP <= 0.0f && (d4 - d3) >= 0.0f && (d5 - d6) >= 0.0f)
+	{
+		float w = (d4 - d3) / ((d4 - d3) + (d5 - d6));
+		return lP + w * (rP - lP); // barycentric coordinates (0,1-w,w)
+	}
+
+	// P inside face region. Compute Q through its barycentric coordinates (u,v,w)
+	float denom = 1.0f / (vtP + vlP + vrP);
+	float v = vlP * denom;
+	float w = vrP * denom;
+	return tP + tPlP * v + tPrP * w; // = u*tP + v*lP + w*rP, u = vtP * denom = 1.0f - v - w
+}
+
 void EventManager::CheckCollisions(Shape* shape1, Shape* shape2)
 {
 	if (shape1->GetType() == 0 && shape2->GetType() == 0)// C-C -PC
@@ -37,12 +129,16 @@ void EventManager::CheckCollisions(Shape* shape1, Shape* shape2)
 	}
 	else if (shape1->GetType() == 0 && shape2->GetType() == 2)// C-S -PC
 	{
+		CircleAABBCollision(shape1, shape2);
 	}
 	else if (shape1->GetType() == 0 && shape2->GetType() == 1)// C-T -PC
 	{
+		glm::vec2 closestPoint;
+		CircleTriangleCollision(shape1, shape2, closestPoint);
 	}
 	else if (shape1->GetType() == 2 && shape2->GetType() == 2)// S-S -PC
 	{
+		AABBAABBCollision(shape1, shape2);
 	}
 	else if (shape1->GetType() == 1 && shape2->GetType() == 1)// T-T -PC
 	{
@@ -52,16 +148,20 @@ void EventManager::CheckCollisions(Shape* shape1, Shape* shape2)
 	}
 }
 
-bool EventManager::CircleAABBCollision(const Shape& c1, const Shape& b) // inefficient for C-C -PC
+bool EventManager::CircleAABBCollision(Shape* C, Shape* S) // inefficient for C-C -PC
 {
 	glm::vec2 closestPoint;
-	ClosestPtPointAABB(c1.GetPosition(), b, closestPoint);
-	if (distance(c1.GetPosition(), closestPoint) <= c1.GetDistanceMetric())
+	ClosestPtPointAABB(C->GetPosition(), *S, closestPoint);
+	if (distance(C->GetPosition(), closestPoint) <= C->GetDistanceMetric())
+	{
 		return true;
+		C->OnCollide(S->GetType());
+		S->OnCollide(C->GetType());
+	}
 	return false;
 }
 
-void EventManager::ClosestPtPointAABB(glm::vec2 const &  P, const Shape& b, glm::vec2 & q)
+void EventManager::ClosestPtPointAABB(glm::vec2 const &  P, const Shape& b, glm::vec2 & q) // section 5.1.3 of RTCD
 {
 	glm::vec2 min(b.GetPosition() - b.GetDistanceMetric());
 	glm::vec2 max(b.GetPosition() + b.GetDistanceMetric());
